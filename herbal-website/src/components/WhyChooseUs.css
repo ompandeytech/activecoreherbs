@@ -1,0 +1,120 @@
+.why-choose-us {
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #F5F5F5 0%, #ffffff 100%);
+}
+
+.container {
+  width: 100%;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 0 0 1rem 0;
+}
+
+.section-header p {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.reasons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.reason-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(63, 174, 90, 0.1);
+}
+
+.reason-card:hover {
+  box-shadow: 0 10px 40px rgba(63, 174, 90, 0.2);
+  border-color: #3FAE5A;
+  transform: translateY(-5px);
+}
+
+.reason-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, rgba(63, 174, 90, 0.1), rgba(63, 174, 90, 0.05));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3FAE5A;
+  font-size: 2.5rem;
+  transition: all 0.3s ease;
+}
+
+.reason-card:hover .reason-icon-wrapper {
+  background: linear-gradient(135deg, #3FAE5A, #2d8a45);
+  color: white;
+  transform: rotate(10deg);
+}
+
+.reason-card h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111111;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.reason-card p {
+  font-size: 1rem;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .why-choose-us {
+    padding: 3rem 1.5rem;
+  }
+
+  .section-header h2 {
+    font-size: 2rem;
+  }
+
+  .section-header p {
+    font-size: 1rem;
+  }
+
+  .reasons-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .reason-card {
+    padding: 2rem;
+  }
+
+  .reason-icon-wrapper {
+    width: 60px;
+    height: 60px;
+    font-size: 2rem;
+  }
+
+  .reason-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .reason-card p {
+    font-size: 0.95rem;
+  }
+}

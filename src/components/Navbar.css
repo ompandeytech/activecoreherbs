@@ -1,0 +1,124 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s ease;
+  background: transparent;
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  padding: 15px 0;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 2px;
+  transition: color 0.4s ease;
+}
+
+.navbar.scrolled .navbar-logo h1 {
+  color: var(--black);
+}
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.navbar-icon {
+  color: var(--white);
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.navbar.scrolled .navbar-icon {
+  color: var(--black);
+}
+
+.navbar-icon:hover {
+  color: var(--soft-green);
+  transform: scale(1.1);
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--gold);
+  color: var(--white);
+  font-size: 0.7rem;
+  font-weight: 600;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 15px 0;
+  }
+  
+  .navbar.scrolled {
+    padding: 12px 0;
+  }
+  
+  .navbar-logo h1 {
+    font-size: 1.4rem;
+  }
+  
+  .navbar-icons {
+    gap: 20px;
+  }
+  
+  .navbar-icon {
+    padding: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-logo h1 {
+    font-size: 1.2rem;
+  }
+  
+  .navbar-icons {
+    gap: 15px;
+  }
+  
+  .cart-count {
+    width: 18px;
+    height: 18px;
+    font-size: 0.65rem;
+  }
+}
