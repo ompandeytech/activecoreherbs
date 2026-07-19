@@ -1,12 +1,22 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiShoppingCart, FiInstagram } from 'react-icons/fi'
+import { FiShoppingCart, FiInstagram, FiMenu, FiX } from 'react-icons/fi'
 import { useCart } from '../context/CartContext'
 import './Navbar.css'
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const { cartCount, setIsCartOpen } = useCart()
+
+  const navLinks = [
+    { href: '#products', label: 'Products' },
+    { href: '#why-choose-us', label: 'Why Choose Us' },
+    { href: '#testimonials', label: 'Testimonials' },
+    { href: '#gallery', label: 'Gallery' },
+    { href: '#faq', label: 'FAQ' },
+    { href: '#contact', label: 'Contact' }
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +49,17 @@ const Navbar = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.3 }}
         >
+          <button
+            className="navbar-icon mobile-menu-toggle"
+            onClick={() => setIsMobileMenuOpen((isOpen) => !isOpen)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMobileMenuOpen}
+          >
+            {isMobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+          </button>
+
           <a 
-            href="https://instagram.com" 
+            href="https://www.instagram.com/activecoreherbs?igsh=MWg5ZmRkNjd6bHBscQ==" 
             target="_blank" 
             rel="noopener noreferrer"
             className="navbar-icon"
@@ -69,6 +88,27 @@ const Navbar = () => {
           </button>
         </motion.div>
       </div>
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            className="mobile-nav-menu"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.2 }}
+          >
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   )
 }

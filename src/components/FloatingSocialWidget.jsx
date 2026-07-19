@@ -24,7 +24,7 @@ const FloatingSocialWidget = () => {
       </motion.a>
 
       <motion.a
-        href="https://instagram.com/herbalessence"
+        href="https://www.instagram.com/activecoreherbs?igsh=MWg5ZmRkNjd6bHBscQ=="
         target="_blank"
         rel="noopener noreferrer"
         className="floating-button instagram-button"

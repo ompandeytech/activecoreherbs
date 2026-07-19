@@ -135,10 +135,10 @@ const ProductDetailsPage = () => {
   ];
 
   const reviews = [
-    { name: "Priya Sharma", avatar: "P", rating: 5, date: "2 days ago", text: "Absolutely love this product! My energy levels have improved significantly and I feel so much more relaxed. The packaging is also beautiful and premium.", verified: true },
-    { name: "Rahul Verma", avatar: "R", rating: 5, date: "1 week ago", text: "Best herbal supplement I've tried. The quality is outstanding and I've noticed great results in just a few weeks.", verified: true },
-    { name: "Anita Patel", avatar: "A", rating: 4, date: "2 weeks ago", text: "Great product! The taste is mild and it's easy to incorporate into my daily routine. Would definitely recommend.", verified: true },
-    { name: "Vikram Singh", avatar: "V", rating: 5, date: "3 weeks ago", text: "Premium quality! You can really feel the difference. The customer service is also excellent.", verified: true }
+    { name: "Arjun Mehta", avatar: "A", rating: 5, date: "2 days ago", text: "Absolutely like this product. It fits easily into my routine and the packaging feels premium.", verified: true },
+    { name: "Rahul Verma", avatar: "R", rating: 5, date: "1 week ago", text: "Best herbal supplement I've tried for daily wellness support. The quality feels outstanding and consistent.", verified: true },
+    { name: "Karan Patel", avatar: "K", rating: 4, date: "2 weeks ago", text: "Great product. The taste is mild and it's easy to incorporate into my morning routine.", verified: true },
+    { name: "Vikram Singh", avatar: "V", rating: 5, date: "3 weeks ago", text: "Premium quality and a good fit for men's wellness. The customer service is also excellent.", verified: true }
   ];
 
   const faqData = [
@@ -210,10 +210,10 @@ const ProductDetailsPage = () => {
 
             <div className="product-details-price-section">
               <span className="product-details-offer-price">
-                ₹{product.price}
+                ₹{product.price.toLocaleString('en-IN')}
               </span>
               <span className="product-details-mrp">
-                ₹{product.originalPrice}
+                ₹{product.originalPrice.toLocaleString('en-IN')}
               </span>
               <span className="product-details-offer-badge">
                 {product.offer}
@@ -534,8 +534,8 @@ const ProductDetailsPage = () => {
                       <h3 className="related-product-name-large">{relatedProduct.name}</h3>
                       <p className="related-product-short-desc">{relatedProduct.shortDescription}</p>
                       <div className="related-product-price-large">
-                        <span className="offer-price">₹{relatedProduct.price}</span>
-                        <span className="mrp">₹{relatedProduct.originalPrice}</span>
+                        <span className="offer-price">₹{relatedProduct.price.toLocaleString('en-IN')}</span>
+                        <span className="mrp">₹{relatedProduct.originalPrice.toLocaleString('en-IN')}</span>
                         <span className="offer">{relatedProduct.offer}</span>
                       </div>
                     </div>

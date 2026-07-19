@@ -1,11 +1,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
+import { FiMail } from 'react-icons/fi'
 import './Contact.css'
 
 const Contact = () => {
   return (
-    <section className="section contact">
+    <section id="contact" className="section contact">
       <div className="container">
         <motion.h2
           className="section-title"
@@ -40,29 +40,10 @@ const Contact = () => {
               </div>
               <div className="contact-details">
                 <h4>Email</h4>
-                <p>info@activecoreherbs.com</p>
+                <p>care@activecoreherbs.com</p>
               </div>
             </div>
 
-            <div className="contact-item">
-              <div className="contact-icon">
-                <FiPhone size={24} />
-              </div>
-              <div className="contact-details">
-                <h4>Phone</h4>
-                <p>+91 98765 43210</p>
-              </div>
-            </div>
-
-            <div className="contact-item">
-              <div className="contact-icon">
-                <FiMapPin size={24} />
-              </div>
-              <div className="contact-details">
-                <h4>Address</h4>
-                <p>123 Herbal Street, Mumbai, Maharashtra 400001</p>
-              </div>
-            </div>
           </motion.div>
 
           <motion.form

@@ -63,7 +63,7 @@ const CheckoutModal = () => {
 
             <div className="checkout-total">
               <span>Total Amount:</span>
-              <span className="checkout-amount">₹{cartTotal}</span>
+              <span className="checkout-amount">₹{cartTotal.toLocaleString('en-IN')}</span>
             </div>
 
             <div className="payment-methods">

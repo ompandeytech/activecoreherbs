@@ -33,7 +33,7 @@ const Instagram = () => {
             Join our community for daily inspiration, wellness tips, and exclusive offers
           </p>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/activecoreherbs?igsh=MWg5ZmRkNjd6bHBscQ=="
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-primary instagram-btn"
@@ -46,7 +46,7 @@ const Instagram = () => {
           {instagramPosts.map((post, index) => (
             <motion.a
               key={index}
-              href="https://instagram.com"
+              href="https://www.instagram.com/activecoreherbs?igsh=MWg5ZmRkNjd6bHBscQ=="
               target="_blank"
               rel="noopener noreferrer"
               className="instagram-item"

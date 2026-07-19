@@ -8,39 +8,39 @@ const Testimonials = () => {
 
   const testimonials = [
     {
-      name: 'Priya Sharma',
+      name: 'Arjun Mehta',
       location: 'Mumbai',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80',
-      text: 'The Ashwagandha capsules have completely transformed my stress levels. I feel more calm and focused throughout the day. Highly recommend to anyone dealing with daily stress!'
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
+      text: 'Active Core Herbs fits well into my daily routine. I feel more balanced through busy workdays, and the product quality feels consistent every time.'
     },
     {
       name: 'Rahul Verma',
       location: 'Delhi',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
-      text: 'Amazing quality products! The Amla hair oil has brought back life to my hair. It\'s thicker, shinier, and healthier than ever. Will definitely be ordering again.'
+      text: 'I wanted a simple herbal supplement for overall wellness, and this has been easy to use daily. The packaging is premium and delivery was smooth.'
     },
     {
-      name: 'Ananya Patel',
+      name: 'Karan Malhotra',
       location: 'Bangalore',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80',
-      text: 'I\'ve tried many skincare products, but the Neem face serum is truly exceptional. My skin has never looked better. The natural ingredients make all the difference!'
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80',
+      text: 'I like that it feels clean and practical, without being overcomplicated. It has become part of my morning routine for general vitality and wellness support.'
     },
     {
       name: 'Vikram Singh',
       location: 'Chennai',
       rating: 5,
       image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80',
-      text: 'The Tulsi drops have boosted my immunity significantly. I haven\'t fallen sick in months since I started using them. Pure and effective herbal medicine!'
+      text: 'The capsules are easy to take and the blend feels thoughtfully made. I appreciate having a natural option that supports my everyday wellness goals.'
     },
     {
-      name: 'Meera Krishnan',
+      name: 'Rohan Nair',
       location: 'Kolkata',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80',
-      text: 'The Rose Water toner is my daily skincare essential. It\'s refreshing, hydrating, and smells divine. My skin feels so soft and radiant after using it.'
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80',
+      text: 'Good experience overall. The product feels reliable, the instructions are clear, and it is a comfortable addition to my men\'s wellness routine.'
     }
   ]
 
@@ -53,7 +53,7 @@ const Testimonials = () => {
   }
 
   return (
-    <section className="section testimonials">
+    <section id="testimonials" className="section testimonials">
       <div className="container">
         <motion.h2
           className="section-title"

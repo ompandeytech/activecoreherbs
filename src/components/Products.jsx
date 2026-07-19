@@ -93,8 +93,8 @@ const Products = () => {
                     </div>
 
                     <div className="product-price-section">
-                      <span className="offer-price">₹{product.price}</span>
-                      <span className="mrp">₹{product.originalPrice}</span>
+                      <span className="offer-price">₹{product.price.toLocaleString('en-IN')}</span>
+                      <span className="mrp">₹{product.originalPrice.toLocaleString('en-IN')}</span>
                       <span className="offer-badge">{product.offer}</span>
                     </div>
 

@@ -62,7 +62,7 @@ const CartDrawer = () => {
                     <img src={item.image} alt={item.name} className="cart-item-image" />
                     <div className="cart-item-details">
                       <h4 className="cart-item-name">{item.name}</h4>
-                      <p className="cart-item-price">₹{item.price}</p>
+                      <p className="cart-item-price">₹{item.price.toLocaleString('en-IN')}</p>
                       <div className="cart-item-quantity">
                         <button
                           className="quantity-btn"
@@ -80,7 +80,7 @@ const CartDrawer = () => {
                       </div>
                     </div>
                     <div className="cart-item-total">
-                      <p className="cart-item-total-price">₹{item.price * item.quantity}</p>
+                      <p className="cart-item-total-price">₹{(item.price * item.quantity).toLocaleString('en-IN')}</p>
                       <button
                         className="remove-btn"
                         onClick={() => removeFromCart(item.id)}
@@ -98,7 +98,7 @@ const CartDrawer = () => {
                 <div className="cart-summary">
                   <div className="summary-row">
                     <span>Subtotal</span>
-                    <span>₹{cartTotal}</span>
+                    <span>₹{cartTotal.toLocaleString('en-IN')}</span>
                   </div>
                   <div className="summary-row">
                     <span>Shipping</span>
@@ -106,7 +106,7 @@ const CartDrawer = () => {
                   </div>
                   <div className="summary-row total">
                     <span>Total</span>
-                    <span>₹{cartTotal}</span>
+                    <span>₹{cartTotal.toLocaleString('en-IN')}</span>
                   </div>
                 </div>
                 <button className="btn btn-primary checkout-btn" onClick={handleCheckout}>

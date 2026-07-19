@@ -20,7 +20,7 @@ const Gallery = () => {
   ]
 
   return (
-    <section className="section gallery">
+    <section id="gallery" className="section gallery">
       <div className="container">
         <motion.h2
           className="section-title"

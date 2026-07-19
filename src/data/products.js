@@ -6,7 +6,7 @@ export const products = [
     id: 1,
     name: "White Edition",
     slug: "white-edition",
-    price: 1299,
+    price: 1499,
     originalPrice: 1599,
     rating: 4.8,
     reviews: 234,

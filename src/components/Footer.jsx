@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiInstagram, FiMail, FiPhone } from 'react-icons/fi'
+import { FiInstagram, FiMail } from 'react-icons/fi'
 import './Footer.css'
 
 const Footer = () => {
@@ -21,14 +21,11 @@ const Footer = () => {
               Experience the healing power of nature with our 100% organic, cruelty-free formulations.
             </p>
             <div className="footer-social">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/activecoreherbs?igsh=MWg5ZmRkNjd6bHBscQ==" target="_blank" rel="noopener noreferrer">
                 <FiInstagram size={24} />
               </a>
-              <a href="mailto:info@herbalessence.com">
+              <a href="mailto:care@activecoreherbs.com">
                 <FiMail size={24} />
-              </a>
-              <a href="tel:+919876543210">
-                <FiPhone size={24} />
               </a>
             </div>
           </motion.div>
@@ -61,17 +58,7 @@ const Footer = () => {
             <ul>
               <li>
                 <FiMail size={18} />
-                <span>info@activecoreherbs.com</span>
-              </li>
-              <li>
-                <FiPhone size={18} />
-                <span>+91 98765 43210</span>
-              </li>
-              <li>
-                <span>123 Herbal Street</span>
-              </li>
-              <li>
-                <span>Mumbai, Maharashtra 400001</span>
+                <span>care@activecoreherbs.com</span>
               </li>
             </ul>
           </motion.div>

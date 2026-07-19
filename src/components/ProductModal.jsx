@@ -106,8 +106,8 @@ const ProductModal = () => {
 
                 <div className="product-modal-price-section">
                   <div className="product-modal-prices">
-                    <span className="product-modal-price">₹{selectedProduct.price}</span>
-                    <span className="product-modal-original-price">₹{selectedProduct.originalPrice}</span>
+                    <span className="product-modal-price">₹{selectedProduct.price.toLocaleString('en-IN')}</span>
+                    <span className="product-modal-original-price">₹{selectedProduct.originalPrice.toLocaleString('en-IN')}</span>
                     {selectedProduct.offer && (
                       <span className="product-modal-offer">{selectedProduct.offer}</span>
                     )}

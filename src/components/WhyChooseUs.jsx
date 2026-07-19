@@ -6,7 +6,7 @@ import './WhyChooseUs.css'
 
 const WhyChooseUs = () => {
   return (
-    <section className="why-choose-us">
+    <section id="why-choose-us" className="why-choose-us">
       <div className="why-choose-container">
         <div className="why-choose-left">
           <div className="why-choose-decorative-circle circle-1"></div>
