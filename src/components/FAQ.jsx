@@ -21,7 +21,7 @@ const FAQ = () => {
     },
     {
       question: 'What is your return policy?',
-      answer: 'We offer a 30-day return policy for unopened and unused products. If you are not satisfied with your purchase, please contact our customer service team within 30 days of delivery for a full refund.'
+      answer: 'We offer a 15-day return policy for unopened and unused products. If you are not satisfied with your purchase, please contact our customer service team within 15 days of delivery for a full refund.'
     },
     {
       question: 'Are your products tested on animals?',

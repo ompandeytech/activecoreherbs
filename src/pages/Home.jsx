@@ -13,6 +13,7 @@ import Contact from '../components/Contact'
 import Footer from '../components/Footer'
 import CartDrawer from '../components/CartDrawer'
 import CheckoutModal from '../components/CheckoutModal'
+import LeadPopup from '../components/LeadPopup'
 
 const Home = () => {
   return (
@@ -31,6 +32,7 @@ const Home = () => {
       <Footer />
       <CartDrawer />
       <CheckoutModal />
+      <LeadPopup />
     </>
   );
 };

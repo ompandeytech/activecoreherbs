@@ -1,24 +1,94 @@
 import React, { useEffect, useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
-import { FiArrowRight, FiPhone } from 'react-icons/fi'
-import whiteProductImage from '../assets/images/white.png'
-import blackProductImage from '../assets/images/black.png'
+import { motion } from 'framer-motion'
+import { FiArrowRight, FiChevronLeft, FiChevronRight, FiShoppingCart } from 'react-icons/fi'
+import { products } from '../data/products'
+import { useCart } from '../context/CartContext'
 import './Hero.css'
 
-const Hero = () => {
-  const heroProductImages = [whiteProductImage, blackProductImage]
-  const [currentHeroImage, setCurrentHeroImage] = useState(0)
+const HeroProductSlider = () => {
+  const [currentProductIndex, setCurrentProductIndex] = useState(0)
+
+  const goToProduct = (index) => {
+    setCurrentProductIndex(index)
+  }
+
+  const nextProduct = () => {
+    setCurrentProductIndex((current) => (current + 1) % products.length)
+  }
+
+  const prevProduct = () => {
+    setCurrentProductIndex((current) => (current - 1 + products.length) % products.length)
+  }
 
   useEffect(() => {
-    const imageInterval = setInterval(() => {
-      setCurrentHeroImage((current) => (current + 1) % heroProductImages.length)
-    }, 3000)
+    const productInterval = setInterval(() => {
+      setCurrentProductIndex((current) => (current + 1) % products.length)
+    }, 4000)
 
-    return () => clearInterval(imageInterval)
-  }, [heroProductImages.length])
+    return () => clearInterval(productInterval)
+  }, [])
 
   return (
-    <section className="hero">
+    <>
+      <div className="product-glow"></div>
+      <div className="glass-card">
+        <div
+          className="hero-product-track"
+          style={{ transform: `translateX(-${currentProductIndex * 100}%)` }}
+        >
+          {products.map((product) => (
+            <div className="hero-product-slide" key={product.id}>
+              <img
+                src={product.image}
+                alt={product.name}
+                className="product-image"
+              />
+            </div>
+          ))}
+        </div>
+        <div className="glass-reflection"></div>
+      </div>
+
+      <button className="hero-slider-arrow hero-slider-prev" onClick={prevProduct} aria-label="Previous product">
+        <FiChevronLeft />
+      </button>
+      <button className="hero-slider-arrow hero-slider-next" onClick={nextProduct} aria-label="Next product">
+        <FiChevronRight />
+      </button>
+
+      <div className="hero-slider-dots" aria-label="Product slider pagination">
+        {products.map((product, index) => (
+          <button
+            key={product.id}
+            className={`hero-slider-dot ${currentProductIndex === index ? 'active' : ''}`}
+            onClick={() => goToProduct(index)}
+            aria-label={`Show ${product.name}`}
+          />
+        ))}
+      </div>
+    </>
+  )
+}
+
+const Hero = () => {
+  const { addToCart, setIsCheckoutOpen } = useCart()
+  const heroDetailsProduct = products[0]
+
+  const handleAddToCart = () => {
+    addToCart(heroDetailsProduct, 1)
+  }
+
+  const handleBuyNow = () => {
+    addToCart(heroDetailsProduct, 1)
+    setIsCheckoutOpen(true)
+  }
+
+  return (
+    <>
+      <div className="announcement-bar">
+        <span>⚡ Fuel Your Strength Naturally | Premium Herbal Collection | Free Shipping Across India</span>
+      </div>
+      <section className="hero">
       {/* Background Decorations */}
       <div className="hero-bg-blobs">
         <div className="blob blob-1"></div>
@@ -62,80 +132,55 @@ const Hero = () => {
       {/* Main Content */}
       <div className="hero-content-wrapper">
         {/* Left Column */}
-        <motion.div 
-          className="hero-left"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-        >
-          <div className="luxury-badge">
-            <span className="badge-icon">🌿</span>
-            <span>100% Natural & Herbal</span>
-          </div>
-
-          <h1 className="hero-heading">
-            Pure Herbal Wellness
-            <br />
-            For Everyday Life
-          </h1>
-
-          <p className="hero-description">
-            Experience the power of nature with premium herbal formulations crafted using traditional Ayurvedic ingredients. Safe, effective, and made for daily wellness.
-          </p>
-
-          <div className="hero-buttons">
-            <motion.button 
-              className="btn btn-primary"
-              whileHover={{ scale: 1.05, y: -3 }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => document.getElementById('products').scrollIntoView({ behavior: 'smooth' })}
-            >
-              Shop Now
-              <FiArrowRight />
-            </motion.button>
-            <motion.button 
-              className="btn btn-secondary"
-              whileHover={{ scale: 1.05, y: -3, borderColor: "#3FAE5A" }}
-              whileTap={{ scale: 0.98 }}
-              onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}
-            >
-              <FiPhone />
-              Contact Now
-            </motion.button>
-          </div>
-        </motion.div>
+        <div className="hero-left">
+          <HeroProductSlider />
+        </div>
 
         {/* Right Column */}
-        <motion.div 
-          className="hero-right"
-          initial={{ opacity: 0, scale: 0.95, x: 30 }}
-          animate={{ opacity: 1, scale: 1, x: 0 }}
-          transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
-        >
-          <div className="product-glow"></div>
-          <div className="glass-card">
-            <AnimatePresence initial={false}>
-              <motion.img 
-                key={currentHeroImage}
-                src={heroProductImages[currentHeroImage]}
-                alt="Premium Herbal Product"
-                className="product-image"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0, y: [0, -10, 0] }}
-                exit={{ opacity: 0, x: -30 }}
-                transition={{
-                  opacity: { duration: 0.7, ease: "easeInOut" },
-                  x: { duration: 0.7, ease: "easeInOut" },
-                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" }
-                }}
-                whileHover={{ scale: 1.05 }}
-              />
-            </AnimatePresence>
-            <div className="glass-reflection"></div>
+        <div className="hero-right">
+          <div className="hero-product-info">
+            <div className="luxury-badge">
+              <span className="badge-icon">🌿</span>
+              <span>100% Natural & Herbal</span>
+            </div>
+
+            <h1 className="hero-heading">Active Core Herbs</h1>
+
+            <p className="hero-description">{heroDetailsProduct.shortDescription}</p>
+
+            <div className="hero-rating">
+              <span className="hero-stars">★★★★★</span>
+              <span>{heroDetailsProduct.rating} ({heroDetailsProduct.reviews} reviews)</span>
+            </div>
+
+            <div className="hero-price-row">
+              <span className="hero-price">₹{heroDetailsProduct.price.toLocaleString('en-IN')}</span>
+              <span className="hero-original-price">₹{heroDetailsProduct.originalPrice.toLocaleString('en-IN')}</span>
+              <span className="hero-discount-badge">{heroDetailsProduct.offer}</span>
+            </div>
+
+            <div className="hero-buttons">
+              <button 
+                className="btn btn-primary"
+                onClick={handleBuyNow}
+              >
+                Buy Now
+                <FiArrowRight />
+              </button>
+              <button 
+                className="btn btn-secondary"
+                onClick={handleAddToCart}
+              >
+                <FiShoppingCart />
+                Add to Cart
+              </button>
+            </div>
           </div>
-        </motion.div>
+
+        </div>
       </div>
     </section>
+    </>
   )
 }
 
