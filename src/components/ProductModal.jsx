@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiX, FiShoppingCart, FiMinus, FiPlus, FiHeart } from 'react-icons/fi'
 import { useCart } from '../context/CartContext'
+import { getDiscountPercentage } from '../data/products'
 import './ProductModal.css'
 
 const ProductModal = () => {
@@ -108,9 +109,7 @@ const ProductModal = () => {
                   <div className="product-modal-prices">
                     <span className="product-modal-price">₹{selectedProduct.price.toLocaleString('en-IN')}</span>
                     <span className="product-modal-original-price">₹{selectedProduct.originalPrice.toLocaleString('en-IN')}</span>
-                    {selectedProduct.offer && (
-                      <span className="product-modal-offer">{selectedProduct.offer}</span>
-                    )}
+                    <span className="product-modal-offer">{getDiscountPercentage(selectedProduct)}</span>
                   </div>
                   <span className="product-modal-stock">
                     {selectedProduct.stock > 10 ? 'In Stock' : `Only ${selectedProduct.stock} left`}

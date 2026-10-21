@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiArrowRight, FiChevronLeft, FiChevronRight, FiShoppingCart } from 'react-icons/fi'
-import { products } from '../data/products'
+import { getDiscountPercentage, products } from '../data/products'
 import { useCart } from '../context/CartContext'
 import './Hero.css'
 
@@ -156,7 +156,7 @@ const Hero = () => {
             <div className="hero-price-row">
               <span className="hero-price">₹{heroDetailsProduct.price.toLocaleString('en-IN')}</span>
               <span className="hero-original-price">₹{heroDetailsProduct.originalPrice.toLocaleString('en-IN')}</span>
-              <span className="hero-discount-badge">{heroDetailsProduct.offer}</span>
+              <span className="hero-discount-badge">{getDiscountPercentage(heroDetailsProduct)}</span>
             </div>
 
             <div className="hero-buttons">

@@ -3,7 +3,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowLeft, FiShoppingCart, FiChevronDown, FiCheck, FiStar, FiTruck, FiShield, FiCreditCard, FiMail, FiPhone, FiUser, FiTrendingUp, FiHeart, FiDroplet, FiActivity, FiAward } from 'react-icons/fi';
 import { FaCartShopping, FaBagShopping, FaLeaf } from 'react-icons/fa6';
-import { products } from '../data/products';
+import { getDiscountPercentage, products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -216,7 +216,7 @@ const ProductDetailsPage = () => {
                 ₹{product.originalPrice.toLocaleString('en-IN')}
               </span>
               <span className="product-details-offer-badge">
-                {product.offer}
+                {getDiscountPercentage(product)}
               </span>
             </div>
 
@@ -536,7 +536,7 @@ const ProductDetailsPage = () => {
                       <div className="related-product-price-large">
                         <span className="offer-price">₹{relatedProduct.price.toLocaleString('en-IN')}</span>
                         <span className="mrp">₹{relatedProduct.originalPrice.toLocaleString('en-IN')}</span>
-                        <span className="offer">{relatedProduct.offer}</span>
+                        <span className="offer">{getDiscountPercentage(relatedProduct)}</span>
                       </div>
                     </div>
                   </Link>

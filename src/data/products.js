@@ -7,7 +7,7 @@ export const products = [
     name: "White Edition",
     slug: "white-edition",
     price: 1499,
-    originalPrice: 1599,
+    originalPrice: 2899,
     rating: 4.8,
     reviews: 234,
     image: whiteProductImage,
@@ -34,7 +34,6 @@ export const products = [
       shelfLife: "24 months"
     },
     stock: 45,
-    offer: "20% OFF"
   },
   {
     id: 2,
@@ -68,6 +67,8 @@ export const products = [
       shelfLife: "24 months"
     },
     stock: 38,
-    offer: "17% OFF"
   }
 ]
+
+export const getDiscountPercentage = ({ price, originalPrice }) =>
+  `${Math.round(((originalPrice - price) / originalPrice) * 100)}% OFF`

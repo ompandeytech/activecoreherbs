@@ -3,14 +3,17 @@ import { FaWhatsapp, FaInstagram } from 'react-icons/fa'
 import { motion } from 'framer-motion'
 import './FloatingSocialWidget.css'
 
+const whatsappMessage = encodeURIComponent('Hello Active Core Herbs, I would like to know more about your products.')
+
 const FloatingSocialWidget = () => {
   return (
     <div className="floating-social-widget">
       <motion.a
-        href="https://wa.me/917580811009"
+        href={`https://wa.me/916269463325?text=${whatsappMessage}`}
         target="_blank"
         rel="noopener noreferrer"
         className="floating-button whatsapp-button"
+        aria-label="Chat on WhatsApp"
         initial={{ opacity: 0, scale: 0.8, y: 20 }}
         animate={{ 
           opacity: 1, 
@@ -20,7 +23,7 @@ const FloatingSocialWidget = () => {
         whileHover={{ scale: 1.08, y: -3 }}
         transition={{ duration: 0.5 }}
       >
-        <FaWhatsapp className="floating-icon" />
+        <FaWhatsapp className="floating-icon" aria-hidden="true" />
       </motion.a>
 
       <motion.a

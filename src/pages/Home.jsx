@@ -1,7 +1,9 @@
 import React from 'react'
 import Navbar from '../components/Navbar'
 import Hero from '../components/Hero'
-import HerbalVideoGallery from '../components/HerbalVideoGallery'
+import AboutUs from '../components/AboutUs'
+// Kept for easy restoration of the original customer-video carousel.
+// import HerbalVideoGallery from '../components/HerbalVideoGallery'
 import Products from '../components/Products'
 import WhyChooseUs from '../components/WhyChooseUs'
 import ScrollingMarquee from '../components/ScrollingMarquee'
@@ -20,7 +22,8 @@ const Home = () => {
     <>
       <Navbar />
       <Hero />
-      <HerbalVideoGallery />
+      {/* <HerbalVideoGallery /> */}
+      <AboutUs />
       <Products />
       <WhyChooseUs />
       <ScrollingMarquee />

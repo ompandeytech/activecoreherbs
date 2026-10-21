@@ -4,7 +4,7 @@ import { FaEye, FaCartShopping, FaBagShopping } from 'react-icons/fa6'
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
-import { products } from '../data/products'
+import { getDiscountPercentage, products } from '../data/products'
 import './Products.css'
 
 const Products = () => {
@@ -95,7 +95,7 @@ const Products = () => {
                     <div className="product-price-section">
                       <span className="offer-price">₹{product.price.toLocaleString('en-IN')}</span>
                       <span className="mrp">₹{product.originalPrice.toLocaleString('en-IN')}</span>
-                      <span className="offer-badge">{product.offer}</span>
+                      <span className="offer-badge">{getDiscountPercentage(product)}</span>
                     </div>
 
                     <div className="product-stock">
