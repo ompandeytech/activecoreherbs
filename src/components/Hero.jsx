@@ -3,7 +3,12 @@ import { motion } from 'framer-motion'
 import { FiArrowRight, FiChevronLeft, FiChevronRight, FiShoppingCart } from 'react-icons/fi'
 import { getDiscountPercentage, products } from '../data/products'
 import { useCart } from '../context/CartContext'
+import heroProductImageBlack from '../assets/images/black.png'
+import heroProductImageOne from '../assets/images/img1.png'
+import heroProductImageTwo from '../assets/images/img2.png'
 import './Hero.css'
+
+const heroProductImages = [heroProductImageBlack, heroProductImageOne, heroProductImageTwo]
 
 const HeroProductSlider = () => {
   const [currentProductIndex, setCurrentProductIndex] = useState(0)
@@ -13,16 +18,16 @@ const HeroProductSlider = () => {
   }
 
   const nextProduct = () => {
-    setCurrentProductIndex((current) => (current + 1) % products.length)
+    setCurrentProductIndex((current) => (current + 1) % heroProductImages.length)
   }
 
   const prevProduct = () => {
-    setCurrentProductIndex((current) => (current - 1 + products.length) % products.length)
+    setCurrentProductIndex((current) => (current - 1 + heroProductImages.length) % heroProductImages.length)
   }
 
   useEffect(() => {
     const productInterval = setInterval(() => {
-      setCurrentProductIndex((current) => (current + 1) % products.length)
+      setCurrentProductIndex((current) => (current + 1) % heroProductImages.length)
     }, 4000)
 
     return () => clearInterval(productInterval)
@@ -36,11 +41,11 @@ const HeroProductSlider = () => {
           className="hero-product-track"
           style={{ transform: `translateX(-${currentProductIndex * 100}%)` }}
         >
-          {products.map((product) => (
-            <div className="hero-product-slide" key={product.id}>
+          {heroProductImages.map((image, index) => (
+            <div className="hero-product-slide" key={image}>
               <img
-                src={product.image}
-                alt={product.name}
+                src={image}
+                alt={`Active Core Herbs product view ${index + 1}`}
                 className="product-image"
               />
             </div>
@@ -57,12 +62,12 @@ const HeroProductSlider = () => {
       </button>
 
       <div className="hero-slider-dots" aria-label="Product slider pagination">
-        {products.map((product, index) => (
+        {heroProductImages.map((image, index) => (
           <button
-            key={product.id}
+            key={image}
             className={`hero-slider-dot ${currentProductIndex === index ? 'active' : ''}`}
             onClick={() => goToProduct(index)}
-            aria-label={`Show ${product.name}`}
+            aria-label={`Show product view ${index + 1}`}
           />
         ))}
       </div>

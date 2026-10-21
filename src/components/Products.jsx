@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FaEye, FaCartShopping, FaBagShopping } from 'react-icons/fa6'
-import { FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
 import { getDiscountPercentage, products } from '../data/products'
@@ -26,16 +25,6 @@ const Products = () => {
   const handleBuyNow = () => {
     addToCart(currentProduct, quantity)
     setIsCheckoutOpen(true)
-  }
-
-  const nextProduct = () => {
-    setCurrentProductIndex((prev) => (prev + 1) % products.length)
-    setQuantity(1)
-  }
-
-  const prevProduct = () => {
-    setCurrentProductIndex((prev) => (prev - 1 + products.length) % products.length)
-    setQuantity(1)
   }
 
   const goToProduct = (index) => {
@@ -76,7 +65,7 @@ const Products = () => {
                   {/* Right Column: Info */}
                   <div className="product-info">
                     <div className="product-name-wrapper">
-                      <h3 className="product-name">{product.name}</h3>
+                      <h3 className="product-name">Active Core Herbs</h3>
                     </div>
 
                     <p className="product-short-desc">{product.shortDescription}</p>
@@ -156,14 +145,6 @@ const Products = () => {
               </div>
             ))}
           </div>
-
-          {/* Slider Navigation */}
-          <button className="slider-nav slider-prev" onClick={prevProduct}>
-            <FiChevronLeft size={24} />
-          </button>
-          <button className="slider-nav slider-next" onClick={nextProduct}>
-            <FiChevronRight size={24} />
-          </button>
         </div>
 
         {/* Dots */}
