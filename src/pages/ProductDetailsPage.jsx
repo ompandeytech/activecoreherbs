@@ -1,23 +1,28 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowLeft, FiShoppingCart, FiChevronDown, FiCheck, FiStar, FiTruck, FiShield, FiCreditCard, FiMail, FiPhone, FiUser, FiTrendingUp, FiHeart, FiDroplet, FiActivity, FiAward } from 'react-icons/fi';
-import { FaCartShopping, FaBagShopping, FaLeaf } from 'react-icons/fa6';
+import { FiArrowLeft, FiShoppingCart, FiChevronDown, FiCheck, FiStar, FiTruck, FiShield, FiCreditCard, FiMail, FiPhone, FiUser, FiTrendingUp, FiHeart, FiDroplet, FiActivity, FiAward, FiChevronLeft, FiChevronRight, FiSearch } from 'react-icons/fi';
+import { FaCartShopping, FaBagShopping, FaLeaf, FaLock, FaTruck, FaLeaf as FaLeaf6, FaBolt, FaHandFist, FaPersonRunning, FaShieldHalved } from 'react-icons/fa6';
 import { getDiscountPercentage, products } from '../data/products';
 import { useCart } from '../context/CartContext';
+import AnnouncementBar from '../components/AnnouncementBar';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CartDrawer from '../components/CartDrawer';
 import CheckoutModal from '../components/CheckoutModal';
-import blackProductImage from '../assets/images/black.png';
+import img1 from '../assets/images/img1.png';
 import './ProductDetailsPage.css';
 
-const ProductDetailsPage = () => {
+const ProductDetailsPage = ({ useDefaultProduct = false }) => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const { addToCart, setIsCheckoutOpen } = useCart();
-  const product = products.find(p => p.slug === slug);
-  const relatedProducts = products.filter(p => p.slug !== slug);
+  
+  // If useDefaultProduct is true (landing page), use black-edition by default
+  // Otherwise use the slug from URL params
+  const productSlug = useDefaultProduct ? 'black-edition' : slug;
+  const product = products.find(p => p.slug === productSlug);
+  const relatedProducts = products.filter(p => p.slug !== productSlug);
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [quantity, setQuantity] = useState(1);
@@ -150,22 +155,25 @@ const ProductDetailsPage = () => {
   ];
 
   return (
-    <div className="product-details-page">
+    <div className={`product-details-page ${useDefaultProduct ? 'landing-page' : ''}`}>
+      <AnnouncementBar />
       <Navbar />
       <CartDrawer />
       <CheckoutModal />
 
       <div className="product-details-content">
-        {/* Back button */}
-        <div className="product-details-breadcrumb">
-          <button onClick={handleBack} className="back-button">
-            <FiArrowLeft /> Back
-          </button>
-        </div>
+        {/* Back button - only show on product detail page, not landing page */}
+        {!useDefaultProduct && (
+          <div className="product-details-breadcrumb">
+            <button onClick={handleBack} className="back-button">
+              <FiArrowLeft /> Back
+            </button>
+          </div>
+        )}
 
-        {/* Main Product Section */}
+        {/* Main Product Section - Three Column Layout */}
         <div className="product-details-main">
-          {/* Left Side: Product Gallery */}
+          {/* Column 1: Product Gallery */}
           <div className="product-details-gallery">
             <div className="product-details-main-image-wrapper">
               <motion.img
@@ -191,9 +199,13 @@ const ProductDetailsPage = () => {
             </div>
           </div>
 
-          {/* Right Side: Product Info */}
+          {/* Column 2: Product Info */}
           <div className="product-details-info">
-            <h1 className="product-details-name">{product.name}</h1>
+            <div className="product-details-title-row">
+              <h1 className="product-details-name">Active Core Herbs</h1>
+              <div className="premium-badge">Premium Formula</div>
+            </div>
+            <p className="product-details-subtitle">Stamina | Energy | Vitality</p>
 
             <div className="product-details-rating">
               <div className="product-details-star-rating">
@@ -206,6 +218,7 @@ const ProductDetailsPage = () => {
               <span className="product-details-rating-value">
                 {product.rating} ({product.reviews} reviews)
               </span>
+              <span className="customer-count">5,000+ customers</span>
             </div>
 
             <div className="product-details-price-section">
@@ -269,19 +282,74 @@ const ProductDetailsPage = () => {
               </div>
             </div>
 
-            {/* Delivery Info */}
+            {/* Trust Badges */}
             <div className="product-details-delivery">
               <div className="delivery-item">
-                <span className="delivery-icon">🌱</span>
-                <span className="delivery-text">100% Herbal</span>
+                <FaLeaf6 className="delivery-icon" />
+                <span className="delivery-text">100% Herbal & Natural</span>
               </div>
               <div className="delivery-item">
-                <span className="delivery-icon">🔒</span>
+                <FaLock className="delivery-icon" />
                 <span className="delivery-text">Secure Payment</span>
               </div>
               <div className="delivery-item">
-                <span className="delivery-icon">💰</span>
-                <span className="delivery-text">COD Available</span>
+                <FaTruck className="delivery-icon" />
+                <span className="delivery-text">Free Shipping Across India</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Column 3: Key Benefits Card */}
+          <div className="product-details-benefits-card">
+            <h3 className="benefits-card-title">
+              <span className="benefits-title-black">KEY</span>
+              <span className="benefits-title-red"> BENEFITS</span>
+            </h3>
+            <div className="benefits-list">
+              <div className="benefit-item">
+                <div className="benefit-icon-wrapper">
+                  <FaBolt className="benefit-icon" />
+                </div>
+                <div className="benefit-content">
+                  <h4 className="benefit-title">More Energy</h4>
+                  <p className="benefit-desc">Stay active all day</p>
+                </div>
+              </div>
+              <div className="benefit-item">
+                <div className="benefit-icon-wrapper">
+                  <FaHandFist className="benefit-icon" />
+                </div>
+                <div className="benefit-content">
+                  <h4 className="benefit-title">Higher Stamina</h4>
+                  <p className="benefit-desc">Do more, go further</p>
+                </div>
+              </div>
+              <div className="benefit-item">
+                <div className="benefit-icon-wrapper">
+                  <FaPersonRunning className="benefit-icon" />
+                </div>
+                <div className="benefit-content">
+                  <h4 className="benefit-title">Better Performance</h4>
+                  <p className="benefit-desc">For your everyday grind</p>
+                </div>
+              </div>
+              <div className="benefit-item">
+                <div className="benefit-icon-wrapper">
+                  <FaShieldHalved className="benefit-icon" />
+                </div>
+                <div className="benefit-content">
+                  <h4 className="benefit-title">Stronger Immunity</h4>
+                  <p className="benefit-desc">Stay healthier, naturally</p>
+                </div>
+              </div>
+              <div className="benefit-item">
+                <div className="benefit-icon-wrapper">
+                  <FaLeaf6 className="benefit-icon" />
+                </div>
+                <div className="benefit-content">
+                  <h4 className="benefit-title">Natural Nutrition</h4>
+                  <p className="benefit-desc">Powered by 15 potent herbs</p>
+                </div>
               </div>
             </div>
           </div>
@@ -408,9 +476,9 @@ const ProductDetailsPage = () => {
                 <div className="why-choose-decorative-circle circle-1"></div>
                 <div className="why-choose-decorative-circle circle-2"></div>
                 <div className="why-choose-decorative-circle circle-3"></div>
-                <img 
-                  src={blackProductImage} 
-                  alt="Herbal Product" 
+                <img
+                  src={img1}
+                  alt="Herbal Product"
                   className="why-choose-product-image"
                 />
               </div>
@@ -520,8 +588,8 @@ const ProductDetailsPage = () => {
             </div>
           </section>
 
-          {/* Related Products - Large Horizontal Cards */}
-          {relatedProducts.length > 0 && (
+          {/* Related Products - Large Horizontal Cards - only show on product detail page */}
+          {!useDefaultProduct && relatedProducts.length > 0 && (
             <section className="premium-section" id="related">
               <h2 className="premium-heading centered">You May Also Like</h2>
               <div className="related-products">
@@ -551,7 +619,7 @@ const ProductDetailsPage = () => {
               <h2 className="cta-heading">Ready to Experience Natural Wellness?</h2>
               <div className="cta-buttons">
                 <button className="cta-btn primary" onClick={handleBuyNow}>Buy Now</button>
-                <Link to="/" className="cta-btn secondary">Contact Us</Link>
+                <a href="mailto:contact@activecoreherbs.com" className="cta-btn secondary">Contact Us</a>
               </div>
             </div>
           </section>

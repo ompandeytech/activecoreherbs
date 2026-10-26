@@ -1,191 +1,153 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { FiArrowRight, FiChevronLeft, FiChevronRight, FiShoppingCart } from 'react-icons/fi'
+import { FaCartShopping, FaBagShopping } from 'react-icons/fa6'
 import { getDiscountPercentage, products } from '../data/products'
 import { useCart } from '../context/CartContext'
-import heroProductImageBlack from '../assets/images/black.png'
-import heroProductImageOne from '../assets/images/img1.png'
-import heroProductImageTwo from '../assets/images/img2.png'
 import './Hero.css'
-
-const heroProductImages = [heroProductImageBlack, heroProductImageOne, heroProductImageTwo]
-
-const HeroProductSlider = () => {
-  const [currentProductIndex, setCurrentProductIndex] = useState(0)
-
-  const goToProduct = (index) => {
-    setCurrentProductIndex(index)
-  }
-
-  const nextProduct = () => {
-    setCurrentProductIndex((current) => (current + 1) % heroProductImages.length)
-  }
-
-  const prevProduct = () => {
-    setCurrentProductIndex((current) => (current - 1 + heroProductImages.length) % heroProductImages.length)
-  }
-
-  useEffect(() => {
-    const productInterval = setInterval(() => {
-      setCurrentProductIndex((current) => (current + 1) % heroProductImages.length)
-    }, 4000)
-
-    return () => clearInterval(productInterval)
-  }, [])
-
-  return (
-    <>
-      <div className="product-glow"></div>
-      <div className="glass-card">
-        <div
-          className="hero-product-track"
-          style={{ transform: `translateX(-${currentProductIndex * 100}%)` }}
-        >
-          {heroProductImages.map((image, index) => (
-            <div className="hero-product-slide" key={image}>
-              <img
-                src={image}
-                alt={`Active Core Herbs product view ${index + 1}`}
-                className="product-image"
-              />
-            </div>
-          ))}
-        </div>
-        <div className="glass-reflection"></div>
-      </div>
-
-      <button className="hero-slider-arrow hero-slider-prev" onClick={prevProduct} aria-label="Previous product">
-        <FiChevronLeft />
-      </button>
-      <button className="hero-slider-arrow hero-slider-next" onClick={nextProduct} aria-label="Next product">
-        <FiChevronRight />
-      </button>
-
-      <div className="hero-slider-dots" aria-label="Product slider pagination">
-        {heroProductImages.map((image, index) => (
-          <button
-            key={image}
-            className={`hero-slider-dot ${currentProductIndex === index ? 'active' : ''}`}
-            onClick={() => goToProduct(index)}
-            aria-label={`Show product view ${index + 1}`}
-          />
-        ))}
-      </div>
-    </>
-  )
-}
 
 const Hero = () => {
   const { addToCart, setIsCheckoutOpen } = useCart()
-  const heroDetailsProduct = products[0]
+  const heroProduct = products[0]
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   const handleAddToCart = () => {
-    addToCart(heroDetailsProduct, 1)
+    addToCart(heroProduct, quantity)
   }
 
   const handleBuyNow = () => {
-    addToCart(heroDetailsProduct, 1)
+    addToCart(heroProduct, quantity)
     setIsCheckoutOpen(true)
   }
 
   return (
-    <>
-      <div className="announcement-bar">
-        <span>⚡ Fuel Your Strength Naturally | Premium Herbal Collection | Free Shipping Across India</span>
-      </div>
-      <section className="hero">
-      {/* Background Decorations */}
-      <div className="hero-bg-blobs">
-        <div className="blob blob-1"></div>
-        <div className="blob blob-2"></div>
-        <div className="blob blob-3"></div>
-      </div>
-
-      {/* Floating Leaves */}
-      <div className="floating-leaves">
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="leaf"
-            initial={{ 
-              x: Math.random() * window.innerWidth,
-              y: -50,
-              rotate: Math.random() * 360,
-              opacity: 0.3 + Math.random() * 0.3
-            }}
-            animate={{
-              y: window.innerHeight + 50,
-              rotate: Math.random() * 360 + 360,
-              x: Math.random() * window.innerWidth
-            }}
-            transition={{
-              duration: 15 + Math.random() * 15,
-              repeat: Infinity,
-              delay: Math.random() * 10,
-              ease: "linear"
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-              fontSize: `${18 + Math.random() * 25}px`
-            }}
-          >
-            🍃
-          </motion.div>
-        ))}
-      </div>
-
-      {/* Main Content */}
-      <div className="hero-content-wrapper">
-        {/* Left Column */}
-        <div className="hero-left">
-          <HeroProductSlider />
-        </div>
-
-        {/* Right Column */}
-        <div className="hero-right">
-          <div className="hero-product-info">
-            <div className="luxury-badge">
-              <span className="badge-icon">🌿</span>
-              <span>100% Natural & Herbal</span>
+    <section className="hero-product-section">
+      <div className="hero-product-content">
+        {/* Main Product Section - Matching ProductDetailsPage */}
+        <div className="hero-product-main">
+          {/* Left Side: Product Gallery */}
+          <div className="hero-product-gallery">
+            <div className="hero-product-main-image-wrapper">
+              <motion.img
+                src={heroProduct.images[currentImageIndex]}
+                alt={heroProduct.name}
+                className="hero-product-main-image"
+                whileHover={{ scale: 1.02 }}
+                transition={{ duration: 0.4 }}
+              />
             </div>
-
-            <h1 className="hero-heading">Active Core Herbs</h1>
-
-            <p className="hero-description">{heroDetailsProduct.shortDescription}</p>
-
-            <div className="hero-rating">
-              <span className="hero-stars">★★★★★</span>
-              <span>{heroDetailsProduct.rating} ({heroDetailsProduct.reviews} reviews)</span>
-            </div>
-
-            <div className="hero-price-row">
-              <span className="hero-price">₹{heroDetailsProduct.price.toLocaleString('en-IN')}</span>
-              <span className="hero-original-price">₹{heroDetailsProduct.originalPrice.toLocaleString('en-IN')}</span>
-              <span className="hero-discount-badge">{getDiscountPercentage(heroDetailsProduct)}</span>
-            </div>
-
-            <div className="hero-buttons">
-              <button 
-                className="btn btn-primary"
-                onClick={handleBuyNow}
-              >
-                Buy Now
-                <FiArrowRight />
-              </button>
-              <button 
-                className="btn btn-secondary"
-                onClick={handleAddToCart}
-              >
-                <FiShoppingCart />
-                Add to Cart
-              </button>
+            <div className="hero-product-thumbnails">
+              {heroProduct.images.map((img, index) => (
+                <button
+                  key={index}
+                  className={`hero-product-thumbnail ${
+                    index === currentImageIndex ? 'active' : ''
+                  }`}
+                  onClick={() => setCurrentImageIndex(index)}
+                >
+                  <img src={img} alt={`${heroProduct.name} view ${index + 1}`} />
+                </button>
+              ))}
             </div>
           </div>
 
+          {/* Right Side: Product Info */}
+          <div className="hero-product-info">
+            <h1 className="hero-product-name">{heroProduct.name}</h1>
+
+            <div className="hero-product-rating">
+              <div className="hero-product-star-rating">
+                {[...Array(5)].map((_, i) => (
+                  <span key={i} className="star">
+                    {i < Math.floor(heroProduct.rating) ? '★' : '☆'}
+                  </span>
+                ))}
+              </div>
+              <span className="hero-product-rating-value">
+                {heroProduct.rating} ({heroProduct.reviews} reviews)
+              </span>
+            </div>
+
+            <div className="hero-product-price-section">
+              <span className="hero-product-offer-price">
+                ₹{heroProduct.price.toLocaleString('en-IN')}
+              </span>
+              <span className="hero-product-mrp">
+                ₹{heroProduct.originalPrice.toLocaleString('en-IN')}
+              </span>
+              <span className="hero-product-offer-badge">
+                {getDiscountPercentage(heroProduct)}
+              </span>
+            </div>
+
+            <div className="hero-product-stock">
+              {heroProduct.stock > 10 ? (
+                <span className="in-stock">✓ In Stock</span>
+              ) : (
+                <span className="low-stock">
+                  ⚠️ Limited Stock: {heroProduct.stock} left
+                </span>
+              )}
+            </div>
+
+            <p className="hero-product-short-desc">
+              {heroProduct.shortDescription}
+            </p>
+
+            <div className="hero-product-actions">
+              <div className="hero-product-quantity-selector">
+                <button
+                  className="hero-product-qty-btn"
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                >
+                  −
+                </button>
+                <span className="hero-product-qty-value">{quantity}</span>
+                <button
+                  className="hero-product-qty-btn"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  +
+                </button>
+              </div>
+
+              <div className="hero-product-action-buttons">
+                <button
+                  className="hero-product-action-btn hero-product-buy-now"
+                  onClick={handleBuyNow}
+                >
+                  <FaBagShopping />
+                  Buy Now
+                </button>
+                <button
+                  className="hero-product-action-btn hero-product-add-to-cart"
+                  onClick={handleAddToCart}
+                >
+                  <FaCartShopping />
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+
+            {/* Delivery Info */}
+            <div className="hero-product-delivery">
+              <div className="delivery-item">
+                <span className="delivery-icon">🌱</span>
+                <span className="delivery-text">100% Herbal</span>
+              </div>
+              <div className="delivery-item">
+                <span className="delivery-icon">🔒</span>
+                <span className="delivery-text">Secure Payment</span>
+              </div>
+              <div className="delivery-item">
+                <span className="delivery-icon">💰</span>
+                <span className="delivery-text">COD Available</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
-    </>
   )
 }
 

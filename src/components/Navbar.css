@@ -1,20 +1,15 @@
 .navbar {
   position: fixed;
-  top: 34px;
+  top: 40px;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 999;
   padding: 20px 0;
   transition: all 0.4s ease;
-  background: transparent;
-}
-
-.navbar.scrolled {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  padding: 15px 0;
 }
 
 .navbar-container {
@@ -27,13 +22,9 @@
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--white);
+  color: var(--black);
   letter-spacing: 2px;
   transition: color 0.4s ease;
-}
-
-.navbar.scrolled .navbar-logo h1 {
-  color: var(--black);
 }
 
 .navbar-icons {
@@ -43,7 +34,7 @@
 }
 
 .navbar-icon {
-  color: var(--white);
+  color: var(--black);
   transition: all 0.3s ease;
   position: relative;
   display: flex;
@@ -53,10 +44,6 @@
   border: none;
   cursor: pointer;
   padding: 8px;
-}
-
-.navbar.scrolled .navbar-icon {
-  color: var(--black);
 }
 
 .navbar-icon:hover {
@@ -93,7 +80,7 @@
 @media (max-width: 768px) {
   .navbar {
     position: fixed;
-    top: 34px !important;
+    top: 36px !important;
     left: 0;
     right: 0;
     bottom: auto;
@@ -150,7 +137,7 @@
 
 @media (max-width: 480px) {
   .navbar {
-    top: 38px !important;
+    top: 34px !important;
   }
 
   .navbar.scrolled {

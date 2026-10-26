@@ -20,19 +20,22 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      setScrolled(window.scrollY > 0)
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
-    <motion.nav
-      className={`navbar ${scrolled ? 'scrolled' : ''}`}
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
+    <AnimatePresence>
+      {scrolled && (
+        <motion.nav
+          className="navbar"
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -100, opacity: 0 }}
+          transition={{ duration: 0.3, ease: 'easeInOut' }}
+        >
       <div className="container navbar-container">
         <motion.div 
           className="navbar-logo"
@@ -109,7 +112,9 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+        </motion.nav>
+      )}
+    </AnimatePresence>
   )
 }
 

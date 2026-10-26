@@ -1,4 +1,9 @@
 import blackProductImage from '../assets/images/black.png'
+import img1 from '../assets/images/img1.png'
+import img2 from '../assets/images/img2.png'
+import img3 from '../assets/images/img3.png'
+import img4 from '../assets/images/img4.png'
+import img5 from '../assets/images/img5.png'
 
 export const products = [
   {
@@ -9,11 +14,13 @@ export const products = [
     originalPrice: 1799,
     rating: 4.9,
     reviews: 312,
-    image: blackProductImage,
+    image: img1,
     images: [
-      blackProductImage,
-      blackProductImage,
-      blackProductImage
+      img1,
+      img2,
+      img3,
+      img4,
+      img5
     ],
     category: "Supplements",
     description: "Premium herbal blend in sophisticated black packaging",
