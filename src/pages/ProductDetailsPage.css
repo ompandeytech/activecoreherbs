@@ -4,13 +4,33 @@
   background-color: #ffffff;
   color: #1a1a1a;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  padding-top: 60px;
+  padding-top: 140px;
   overflow-x: hidden;
 }
 
 /* When used as landing page, reduce top padding */
 .product-details-page.landing-page {
-  padding-top: 40px;
+  padding-top: 120px;
+}
+
+@media (max-width: 768px) {
+  .product-details-page {
+    padding-top: 116px;
+  }
+
+  .product-details-page.landing-page {
+    padding-top: 96px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-details-page {
+    padding-top: 114px;
+  }
+
+  .product-details-page.landing-page {
+    padding-top: 94px;
+  }
 }
 
 .product-details-page.landing-page .product-details-content {
@@ -512,7 +532,7 @@
 /* Sticky Tabs */
 .sticky-tabs-container {
   position: sticky;
-  top: 40px;
+  top: 80px;
   z-index: 998;
   background: rgba(255,255,255,0.95);
   backdrop-filter: blur(10px);
@@ -522,13 +542,13 @@
 
 @media (max-width: 768px) {
   .sticky-tabs-container {
-    top: 36px;
+    top: 70px;
   }
 }
 
 @media (max-width: 480px) {
   .sticky-tabs-container {
-    top: 34px;
+    top: 68px;
   }
 }
 
@@ -585,18 +605,18 @@
   max-width: 1200px;
   margin: 0 auto;
   width: 100%;
-  scroll-margin-top: 140px;
+  scroll-margin-top: 180px;
 }
 
 @media (max-width: 768px) {
   .premium-section {
-    scroll-margin-top: 126px;
+    scroll-margin-top: 156px;
   }
 }
 
 @media (max-width: 480px) {
   .premium-section {
-    scroll-margin-top: 114px;
+    scroll-margin-top: 154px;
   }
 }
 

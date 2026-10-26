@@ -7,6 +7,8 @@ import './Navbar.css'
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [isVisible, setIsVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
   const { cartCount, setIsCartOpen } = useCart()
 
   const navLinks = [
@@ -20,22 +22,43 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0)
+      const currentScrollY = window.scrollY
+
+      // Set scrolled state for background change
+      setScrolled(currentScrollY > 0)
+
+      // Hide/show navbar based on scroll direction
+      if (currentScrollY > lastScrollY && currentScrollY > 50) {
+        // Scrolling down - hide navbar
+        setIsVisible(false)
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show navbar
+        setIsVisible(true)
+      }
+
+      // Always show navbar at the top
+      if (currentScrollY < 10) {
+        setIsVisible(true)
+      }
+
+      setLastScrollY(currentScrollY)
     }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+
+    const handleScrollWithThreshold = () => {
+      requestAnimationFrame(handleScroll)
+    }
+
+    window.addEventListener('scroll', handleScrollWithThreshold, { passive: true })
+    return () => window.removeEventListener('scroll', handleScrollWithThreshold)
+  }, [lastScrollY])
 
   return (
-    <AnimatePresence>
-      {scrolled && (
-        <motion.nav
-          className="navbar"
-          initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -100, opacity: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-        >
+    <motion.nav
+      className={`navbar ${isVisible ? 'navbar-visible' : 'navbar-hidden'}`}
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+    >
       <div className="container navbar-container">
         <motion.div 
           className="navbar-logo"
@@ -112,9 +135,7 @@ const Navbar = () => {
           </motion.div>
         )}
       </AnimatePresence>
-        </motion.nav>
-      )}
-    </AnimatePresence>
+    </motion.nav>
   )
 }
 
