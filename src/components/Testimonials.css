@@ -17,7 +17,7 @@
 }
 
 .testimonial-icon {
-  color: var(--soft-green);
+  color: var(--primary-red);
   margin-bottom: 25px;
   opacity: 0.5;
 }
@@ -42,7 +42,7 @@
   height: 70px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--soft-green);
+  border: 3px solid var(--primary-red);
 }
 
 .author-info {
@@ -92,9 +92,9 @@
 }
 
 .control-btn:hover {
-  background: var(--soft-green);
+  background: var(--primary-red);
   color: var(--white);
-  border-color: var(--soft-green);
+  border-color: var(--primary-red);
   transform: scale(1.1);
 }
 
@@ -114,12 +114,12 @@
 }
 
 .testimonial-dot:hover {
-  border-color: var(--soft-green);
+  border-color: var(--primary-red);
 }
 
 .testimonial-dot.active {
-  background: var(--soft-green);
-  border-color: var(--soft-green);
+  background: var(--primary-red);
+  border-color: var(--primary-red);
   transform: scale(1.2);
 }
 

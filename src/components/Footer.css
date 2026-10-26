@@ -44,7 +44,7 @@
 }
 
 .footer-social a:hover {
-  background: var(--soft-green);
+  background: var(--primary-red);
   transform: translateY(-3px);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .footer-links a:hover {
-  color: var(--soft-green);
+  color: var(--primary-red);
 }
 
 .footer-contact li {
@@ -85,7 +85,7 @@
 }
 
 .footer-contact li svg {
-  color: var(--soft-green);
+  color: var(--primary-red);
   flex-shrink: 0;
 }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiArrowLeft, FiShoppingCart, FiChevronDown, FiCheck, FiStar, FiTruck, FiShield, FiCreditCard, FiMail, FiPhone, FiUser, FiTrendingUp, FiHeart, FiDroplet, FiActivity, FiAward, FiChevronLeft, FiChevronRight, FiSearch, FiClock, FiWind } from 'react-icons/fi';
-import { FaCartShopping, FaBagShopping, FaLeaf, FaLock, FaTruck, FaLeaf as FaLeaf6, FaBolt, FaHandFist, FaPersonRunning, FaShieldHalved, FaArrowRight, FaSpoon, FaMars } from 'react-icons/fa6';
+import { FaCartShopping, FaBagShopping, FaLeaf, FaLock, FaTruck, FaLeaf as FaLeaf6, FaBolt, FaHandFist, FaPersonRunning, FaShieldHalved, FaArrowRight, FaSpoon, FaMars, FaSeedling, FaMountain, FaCircleDot } from 'react-icons/fa6';
 import { getDiscountPercentage, products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import AnnouncementBar from '../components/AnnouncementBar';
@@ -139,14 +139,14 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
   ];
 
   const ingredients = [
-    { name: "Ashwagandha", botanical: "Withania somnifera", desc: "Reduces stress & anxiety", color: "#e6f7e6" },
-    { name: "Shatavari", botanical: "Asparagus racemosus", desc: "Supports vitality", color: "#f0f9e6" },
-    { name: "Safed Musli", botanical: "Chlorophytum borivilianum", desc: "Enhances strength", color: "#e6f4f7" },
-    { name: "Gokhru", botanical: "Tribulus terrestris", desc: "Supports wellness", color: "#f7f0e6" },
-    { name: "Kaunch Beej", botanical: "Mucuna pruriens", desc: "Natural vitality", color: "#f0f9e6" },
-    { name: "Vidarikand", botanical: "Pueraria tuberosa", desc: "Traditional herb", color: "#e6f4f7" },
-    { name: "Shilajit", botanical: "Asphaltum punjabianum", desc: "Enhances vitality", color: "#f7f0e6" },
-    { name: "Amalaki", botanical: "Phyllanthus emblica", desc: "Rich in Vitamin C", color: "#f0f9e6" }
+    { name: "Ashwagandha", botanical: "Withania somnifera", desc: "Reduces stress & anxiety", icon: <FaLeaf /> },
+    { name: "Shatavari", botanical: "Asparagus racemosus", desc: "Supports vitality", icon: <FaLeaf /> },
+    { name: "Safed Musli", botanical: "Chlorophytum borivilianum", desc: "Enhances strength", icon: <FaLeaf /> },
+    { name: "Gokhru", botanical: "Tribulus terrestris", desc: "Supports wellness", icon: <FaLeaf /> },
+    { name: "Kaunch Beej", botanical: "Mucuna pruriens", desc: "Natural vitality", icon: <FaSeedling /> },
+    { name: "Vidarikand", botanical: "Pueraria tuberosa", desc: "Traditional herb", icon: <FaSeedling /> },
+    { name: "Shilajit", botanical: "Asphaltum punjabianum", desc: "Enhances vitality", icon: <FaMountain /> },
+    { name: "Amalaki", botanical: "Phyllanthus emblica", desc: "Rich in Vitamin C", icon: <FaCircleDot /> }
   ];
 
   const howItWorks = [
@@ -445,10 +445,9 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
                 <motion.div
                   key={index}
                   className="ingredient-card"
-                  style={{ backgroundColor: ingredient.color }}
                   whileHover={{ y: -5 }}
                 >
-                  <div className="ingredient-icon">🍃</div>
+                  <div className="ingredient-icon">{ingredient.icon}</div>
                   <h3 className="ingredient-name">{ingredient.name}</h3>
                   <p className="ingredient-botanical">{ingredient.botanical}</p>
                   <p className="ingredient-desc">{ingredient.desc}</p>

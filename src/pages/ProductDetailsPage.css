@@ -1478,44 +1478,123 @@
 
 .ingredient-card {
   padding: 2rem 1.5rem;
-  border-radius: 16px;
+  border-radius: 12px;
   text-align: center;
-  border: 1px solid rgba(139, 46, 56, 0.1);
+  border: 1px solid #e8e8e8;
   cursor: pointer;
-  background: white;
-  transition: all 0.3s;
+  background: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 220px;
 }
 
 .ingredient-card:hover {
-  box-shadow: 0 8px 25px rgba(139, 46, 56, 0.15);
+  box-shadow: 0 8px 24px rgba(139, 46, 56, 0.12);
   border-color: #8B2E38;
+  transform: translateY(-4px);
 }
 
 .ingredient-icon {
-  font-size: 3rem;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
+  color: #8B2E38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, rgba(139, 46, 56, 0.08) 0%, rgba(139, 46, 56, 0.04) 100%);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
 .ingredient-name {
-  font-size: 1.15rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.5rem;
   color: #1a1a1a;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: -0.01em;
 }
 
 .ingredient-botanical {
   font-size: 0.85rem;
   color: #8B2E38;
   font-style: italic;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.75rem;
   font-weight: 500;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .ingredient-desc {
   font-size: 0.9rem;
   color: #666;
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .ingredients-grid {
+    gap: 1.25rem;
+  }
+
+  .ingredient-card {
+    padding: 1.75rem 1.25rem;
+    min-height: 200px;
+  }
+
+  .ingredient-icon {
+    font-size: 2.25rem;
+    width: 56px;
+    height: 56px;
+  }
+
+  .ingredient-name {
+    font-size: 1rem;
+  }
+
+  .ingredient-botanical {
+    font-size: 0.8rem;
+  }
+
+  .ingredient-desc {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .ingredients-grid {
+    gap: 1rem;
+  }
+
+  .ingredient-card {
+    padding: 1.5rem 1rem;
+    min-height: 180px;
+  }
+
+  .ingredient-icon {
+    font-size: 2rem;
+    width: 52px;
+    height: 52px;
+  }
+
+  .ingredient-name {
+    font-size: 0.95rem;
+  }
+
+  .ingredient-botanical {
+    font-size: 0.75rem;
+  }
+
+  .ingredient-desc {
+    font-size: 0.8rem;
+  }
 }
 
 /* How It Works */
@@ -1770,7 +1849,7 @@
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #2d5a27 0%, #4a8f40 100%);
+  background: linear-gradient(135deg, #42c6ff 0%, #7fd2e0 100%);
   color: white;
   display: flex;
   align-items: center;
@@ -1809,8 +1888,8 @@
 
 .verified-badge {
   display: inline-block;
-  background: #e6f7e6;
-  color: #2d5a27;
+  background: #FCEDEF;
+  color: #8B1424;
   font-size: 0.85rem;
   font-weight: 600;
   padding: 0.25rem 0.7rem;
@@ -1982,7 +2061,7 @@
 
 /* CTA Banner */
 .cta-banner {
-  background: linear-gradient(135deg, #2d5a27 0%, #4a8f40 100%);
+  background: linear-gradient(135deg, #8B1424 0%, #A6192E 50%, #650B18 100%);
   padding: 4rem 2rem;
   border-radius: 32px;
   text-align: center;
@@ -2022,7 +2101,7 @@
 
 .cta-btn.primary {
   background: white;
-  color: #2d5a27;
+  color: #8B1424;
 }
 
 .cta-btn.primary:hover {
@@ -2031,13 +2110,14 @@
 }
 
 .cta-btn.secondary {
-  background: rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.1);
   color: white;
-  border: 2px solid rgba(255,255,255,0.4);
+  border: 2px solid rgba(255,255,255,0.5);
 }
 
 .cta-btn.secondary:hover {
-  background: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.7);
 }
 
 /* Product Not Found */
