@@ -72,10 +72,10 @@
   font-weight: 500;
 }
 
-/* Main Product Section - Three Column Layout */
+/* Main Product Section - Two Column Layout */
 .product-details-main {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1.25fr) minmax(260px, 0.65fr);
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
   gap: 2rem;
   margin-bottom: 3rem;
   align-items: start;
@@ -83,37 +83,10 @@
   box-sizing: border-box;
 }
 
-@media (max-width: 1400px) {
-  .product-details-main {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(260px, 0.55fr);
-    gap: 1.5rem;
-  }
-}
-
-@media (max-width: 1300px) {
-  .product-details-main {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(250px, 0.5fr);
-    gap: 1.25rem;
-  }
-}
-
 @media (max-width: 1200px) {
   .product-details-main {
     grid-template-columns: 1fr 1fr;
     gap: 1.5rem;
-  }
-  .product-details-benefits-card {
-    grid-column: 1 / -1;
-  }
-}
-
-@media (max-width: 1100px) {
-  .product-details-main {
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-  }
-  .product-details-benefits-card {
-    grid-column: 1 / -1;
   }
 }
 
@@ -129,9 +102,6 @@
     grid-column: 1 / -1;
   }
   .product-details-info {
-    grid-column: 1 / -1;
-  }
-  .product-details-benefits-card {
     grid-column: 1 / -1;
   }
 }
@@ -395,7 +365,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  padding-top: 2.5rem;
+  padding-top: 1rem;
   border-top: 1px solid #f0f0f0;
   align-items: start;
   justify-items: center;
@@ -424,104 +394,6 @@
   font-weight: 600;
   color: #333;
   line-height: 1.3;
-}
-
-/* Column 3: Key Benefits Card */
-.product-details-benefits-card {
-  background: #faf8f5;
-  border: 1px solid #e8e0d5;
-  border-radius: 18px;
-  padding: 1.25rem;
-  height: fit-content;
-  width: 100%;
-  box-sizing: border-box;
-  overflow: hidden;
-}
-
-.benefits-card-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  margin: 0 0 0.75rem;
-  padding-bottom: 0.5rem;
-  border-bottom: none;
-  letter-spacing: 0.5px;
-  position: relative;
-}
-
-.benefits-card-title::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 65px;
-  height: 3px;
-  background: #941F27;
-}
-
-.benefits-title-black {
-  color: #000000;
-}
-
-.benefits-title-red {
-  color: #941F27;
-}
-
-.benefits-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.benefit-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 0.75rem 0;
-  border-bottom: 1px solid #e8e0d5;
-}
-
-.benefit-item:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
-.benefit-icon-wrapper {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #F5E7CC;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #171717;
-  font-size: 1.5rem;
-  flex-shrink: 0;
-}
-
-.product-details-benefits-card .benefit-icon {
-  width: 25px;
-  height: 25px;
-}
-
-.benefit-content {
-  flex: 1;
-  padding-top: 0.25rem;
-}
-
-.product-details-benefits-card .benefit-title {
-  font-size: 1rem;
-  font-weight: 700;
-  margin: 0 0 0.25rem;
-  color: #000000;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-}
-
-.product-details-benefits-card .benefit-desc {
-  font-size: 0.85rem;
-  color: #555;
-  margin: 0;
-  line-height: 1.4;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
 /* Mobile responsive adjustments */
@@ -621,33 +493,6 @@
     min-width: 140px;
     padding: 0.9rem 1.5rem;
     font-size: 1rem;
-  }
-
-  .product-details-benefits-card {
-    padding: 1rem;
-  }
-
-  .benefits-card-title {
-    font-size: 1.2rem;
-  }
-
-  .benefits-card-title::after {
-    width: 55px;
-    bottom: 0;
-  }
-
-  .product-details-benefits-card .benefit-icon-wrapper {
-    width: 52px;
-    height: 52px;
-    font-size: 1.3rem;
-  }
-
-  .product-details-benefits-card .benefit-title {
-    font-size: 0.95rem;
-  }
-
-  .product-details-benefits-card .benefit-desc {
-    font-size: 0.8rem;
   }
 
   .product-details-delivery {
@@ -767,6 +612,294 @@
   text-align: center;
 }
 
+/* Benefits Section Heading */
+.benefits-heading {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  color: #1a1a1a;
+  text-align: left;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.benefits-heading-maroon {
+  color: #A71930;
+}
+
+.benefits-heading-black {
+  color: #171717;
+}
+
+.benefits-heading-decorator {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.decorator-line {
+  width: 60px;
+  height: 2px;
+  background: #A71930;
+}
+
+@media (max-width: 768px) {
+  .benefits-heading {
+    font-size: 2rem;
+  }
+
+  .decorator-line {
+    width: 40px;
+  }
+
+  .benefits-heading-decorator {
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-heading {
+    font-size: 1.75rem;
+  }
+
+  .decorator-line {
+    width: 30px;
+  }
+
+  .benefits-heading-decorator {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Benefits Infographic - Two-Column Layout */
+.benefits-two-column {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+/* Left side - Infographic image */
+.benefits-image-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.benefits-infographic-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Right side - Benefits content */
+.benefits-content-side {
+  display: flex;
+  flex-direction: column;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.benefit-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.benefit-icon-circle {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #A71930;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.benefit-icon-circle:hover {
+  transform: scale(1.05);
+  background: #8B1626;
+  box-shadow: 0 4px 12px rgba(167, 25, 48, 0.3);
+}
+
+.benefit-icon-circle .benefit-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.benefit-text-wrapper {
+  flex: 1;
+}
+
+.benefit-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #A71930;
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.3;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.benefit-description {
+  font-size: 0.85rem;
+  color: #555555;
+  margin: 0;
+  line-height: 1.5;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .benefits-two-column {
+    gap: 2rem;
+  }
+
+  .benefits-infographic-img {
+    max-width: 400px;
+  }
+
+  .benefits-grid {
+    gap: 1.5rem;
+  }
+
+  .benefit-icon-circle {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+
+  .benefit-icon-circle .benefit-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .benefit-title {
+    font-size: 0.85rem;
+  }
+
+  .benefit-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-two-column {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .benefits-image-side {
+    order: -1;
+  }
+
+  .benefits-infographic-img {
+    max-width: 350px;
+  }
+
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+
+  .benefit-icon-circle {
+    width: 42px;
+    height: 42px;
+    font-size: 1.1rem;
+  }
+
+  .benefit-icon-circle .benefit-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .benefit-title {
+    font-size: 0.8rem;
+  }
+
+  .benefit-description {
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .benefit-card {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .benefits-infographic-img {
+    max-width: 300px;
+  }
+
+  .benefit-icon-circle {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+
+  .benefit-icon-circle .benefit-icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .benefit-title {
+    font-size: 0.85rem;
+  }
+
+  .benefit-description {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-infographic-img {
+    max-width: 250px;
+  }
+
+  .benefit-icon-circle {
+    width: 38px;
+    height: 38px;
+    font-size: 0.95rem;
+  }
+
+  .benefit-icon-circle .benefit-icon {
+    width: 15px;
+    height: 15px;
+  }
+
+  .benefit-title {
+    font-size: 0.8rem;
+  }
+
+  .benefit-description {
+    font-size: 0.75rem;
+  }
+}
+
 /* Two Column Description */
 .description-two-column {
   display: grid;
@@ -780,38 +913,199 @@
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .description-right {
+    order: -1;
+  }
+
+  .description-image {
+    max-width: 300px;
+  }
 }
 
 .premium-description {
-  font-size: 1.2rem;
-  line-height: 1.9;
+  font-size: 1.1rem;
+  line-height: 1.7;
   color: #444;
   margin: 0 0 1rem;
+}
+
+/* Why You'll Love It Section */
+.why-love-section {
+  background: #FFFFFF;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.why-love-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.why-love-heading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  letter-spacing: 0.5px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.why-love-line {
+  width: 60px;
+  height: 2px;
+  background: #981F2B;
+  flex-shrink: 0;
+}
+
+.why-love-headline {
+  font-size: 52px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0 0 2rem;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.why-love-highlight {
+  color: #981F2B;
+}
+
+.why-love-description {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #333;
+  margin: 0 0 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 400;
+}
+
+.why-love-bold-highlight {
+  color: #981F2B;
+  font-weight: 700;
+}
+
+.why-love-buy-btn {
+  background: #981F2B;
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(152, 31, 43, 0.3);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.why-love-buy-btn:hover {
+  background: #8a1a25;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(152, 31, 43, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .why-love-headline {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 768px) {
+  .why-love-section {
+    padding: 3rem 1.5rem;
+  }
+
+  .why-love-heading {
+    font-size: 1.3rem;
+    gap: 1rem;
+  }
+
+  .why-love-line {
+    width: 40px;
+  }
+
+  .why-love-headline {
+    font-size: 32px;
+    margin-bottom: 1.5rem;
+  }
+
+  .why-love-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .why-love-buy-btn {
+    padding: 0.9rem 2rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .why-love-heading {
+    font-size: 1.2rem;
+  }
+
+  .why-love-line {
+    width: 30px;
+  }
+
+  .why-love-headline {
+    font-size: 28px;
+  }
+
+  .why-love-description {
+    font-size: 0.95rem;
+  }
+
+  .why-love-buy-btn {
+    padding: 0.85rem 1.75rem;
+    font-size: 0.95rem;
+  }
 }
 
 .description-right {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
-.natural-card {
-  background: linear-gradient(135deg, #e6f7e6 0%, #f0f9e6 100%);
-  padding: 3rem 2rem;
-  border-radius: 24px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(45, 90, 39, 0.08);
+.description-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.natural-icon {
-  font-size: 5rem;
-  margin-bottom: 1rem;
+.description-highlights {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
 }
 
-.natural-text {
-  font-size: 1.3rem;
+.highlight-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #8B2E38 0%, #A03542 100%);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
   font-weight: 600;
-  color: #2d5a27;
-  margin: 0;
+  letter-spacing: 0.3px;
 }
 
 /* Why You'll Love It - Features Grid */
@@ -880,27 +1174,35 @@
   }
 }
 
+@media (max-width: 480px) {
+  .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .benefit-card {
   background: white;
   padding: 2rem;
-  border-radius: 18px;
-  border: 1px solid #e8f5e8;
+  border-radius: 16px;
+  border: 1px solid #e8e0d5;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.2rem;
-  box-shadow: 0 4px 15px rgba(45, 90, 39, 0.05);
+  gap: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  text-align: center;
 }
 
 .benefits-grid .benefit-icon-wrapper {
-  width: 56px;
-  height: 56px;
-  background: linear-gradient(135deg, #2d5a27 0%, #4a8f40 100%);
-  border-radius: 14px;
+  width: 50px;
+  height: 50px;
+  background: transparent;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  font-size: 1.5rem;
+  color: #8B2E38;
+  font-size: 1.8rem;
 }
 
 .benefits-grid .benefit-icon {
@@ -909,17 +1211,121 @@
 }
 
 .benefits-grid .benefit-title {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.1rem;
+  font-weight: 700;
   margin: 0;
   color: #1a1a1a;
+}
+
+.benefits-grid .benefit-desc {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Product Comparison Section */
+.comparison-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.comparison-table-wrapper {
+  overflow-x: auto;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border: 1px solid #e8e0d5;
+}
+
+.comparison-header {
+  background: linear-gradient(135deg, #8B2E38 0%, #A03542 100%);
+  color: white;
+  padding: 1.25rem 1.5rem;
+  text-align: left;
+  font-weight: 700;
+  font-size: 1rem;
+  border-bottom: 2px solid #8B2E38;
+}
+
+.comparison-header.active-core {
+  border-left: 3px solid #8B2E38;
+}
+
+.comparison-header.standard {
+  border-left: 3px solid #999;
+}
+
+.comparison-table tbody tr {
+  border-bottom: 1px solid #e8e0d5;
+}
+
+.comparison-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.comparison-feature {
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  background: #faf8f5;
+  font-size: 0.95rem;
+  border-right: 1px solid #e8e0d5;
+}
+
+.comparison-value {
+  padding: 1.25rem 1.5rem;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.5;
+}
+
+.comparison-value.active-core {
+  background: white;
+  border-right: 1px solid #e8e0d5;
+}
+
+.comparison-value.active-core strong {
+  color: #8B2E38;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.comparison-value.standard {
+  background: #f9f9f9;
+}
+
+.comparison-detail {
+  display: block;
+  font-size: 0.85rem;
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+@media (max-width: 768px) {
+  .comparison-header {
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .comparison-feature,
+  .comparison-value {
+    padding: 1rem;
+    font-size: 0.85rem;
+  }
 }
 
 /* Ingredients Grid */
 .ingredients-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 @media (max-width: 1200px) {
@@ -934,30 +1340,52 @@
   }
 }
 
+@media (max-width: 480px) {
+  .ingredients-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 .ingredient-card {
-  padding: 2.5rem 2rem;
-  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  border-radius: 16px;
   text-align: center;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: 1px solid rgba(139, 46, 56, 0.1);
   cursor: pointer;
+  background: white;
+  transition: all 0.3s;
+}
+
+.ingredient-card:hover {
+  box-shadow: 0 8px 25px rgba(139, 46, 56, 0.15);
+  border-color: #8B2E38;
 }
 
 .ingredient-icon {
-  font-size: 3.5rem;
+  font-size: 3rem;
   margin-bottom: 1rem;
 }
 
 .ingredient-name {
-  font-size: 1.3rem;
+  font-size: 1.15rem;
   font-weight: 700;
-  margin: 0 0 0.5rem;
+  margin: 0 0 0.25rem;
   color: #1a1a1a;
 }
 
+.ingredient-botanical {
+  font-size: 0.85rem;
+  color: #8B2E38;
+  font-style: italic;
+  margin: 0 0 0.5rem;
+  font-weight: 500;
+}
+
 .ingredient-desc {
-  font-size: 1rem;
-  color: #555;
+  font-size: 0.9rem;
+  color: #666;
   margin: 0;
+  line-height: 1.4;
 }
 
 /* How It Works */

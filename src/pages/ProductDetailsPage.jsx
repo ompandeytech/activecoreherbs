@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FiArrowLeft, FiShoppingCart, FiChevronDown, FiCheck, FiStar, FiTruck, FiShield, FiCreditCard, FiMail, FiPhone, FiUser, FiTrendingUp, FiHeart, FiDroplet, FiActivity, FiAward, FiChevronLeft, FiChevronRight, FiSearch } from 'react-icons/fi';
-import { FaCartShopping, FaBagShopping, FaLeaf, FaLock, FaTruck, FaLeaf as FaLeaf6, FaBolt, FaHandFist, FaPersonRunning, FaShieldHalved } from 'react-icons/fa6';
+import { FiArrowLeft, FiShoppingCart, FiChevronDown, FiCheck, FiStar, FiTruck, FiShield, FiCreditCard, FiMail, FiPhone, FiUser, FiTrendingUp, FiHeart, FiDroplet, FiActivity, FiAward, FiChevronLeft, FiChevronRight, FiSearch, FiClock, FiWind } from 'react-icons/fi';
+import { FaCartShopping, FaBagShopping, FaLeaf, FaLock, FaTruck, FaLeaf as FaLeaf6, FaBolt, FaHandFist, FaPersonRunning, FaShieldHalved, FaArrowRight, FaSpoon, FaMars } from 'react-icons/fa6';
 import { getDiscountPercentage, products } from '../data/products';
 import { useCart } from '../context/CartContext';
 import AnnouncementBar from '../components/AnnouncementBar';
@@ -11,6 +11,9 @@ import Footer from '../components/Footer';
 import CartDrawer from '../components/CartDrawer';
 import CheckoutModal from '../components/CheckoutModal';
 import img1 from '../assets/images/img1.png';
+import img7 from '../assets/images/img7.png';
+import blackProductImage from '../assets/images/black.png';
+import img6 from '../assets/images/img6.png';
 import './ProductDetailsPage.css';
 
 const ProductDetailsPage = ({ useDefaultProduct = false }) => {
@@ -30,7 +33,7 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
   const [openFAQ, setOpenFAQ] = useState(null);
   const sectionRefs = useRef({});
 
-  const tabs = ['description', 'benefits', 'ingredients', 'reviews', 'faq'];
+  const tabs = ['description', 'benefits', 'ingredients', 'comparison', 'reviews', 'faq'];
 
   if (!product) {
     return (
@@ -102,27 +105,48 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
     };
   }, []);
 
-  const features = [
-    { icon: "🌿", title: "100% Herbal", desc: "Pure natural ingredients" },
-    { icon: "🚫", title: "No Chemicals", desc: "Free from harmful additives" },
-    { icon: "🧪", title: "Lab Tested", desc: "Certified quality standards" },
-    { icon: "🇮🇳", title: "Made in India", desc: "Proudly Indian heritage" }
-  ];
-
   const benefits = [
-    { icon: <FiTrendingUp className="benefit-icon" />, title: "Boosts Immunity" },
-    { icon: <FiActivity className="benefit-icon" />, title: "Improves Energy" },
-    { icon: <FaLeaf className="benefit-icon" />, title: "Better Digestion" },
-    { icon: <FiHeart className="benefit-icon" />, title: "Daily Wellness" },
-    { icon: <FiDroplet className="benefit-icon" />, title: "Supports Skin" },
-    { icon: <FiAward className="benefit-icon" />, title: "Natural Formula" }
+    {
+      icon: <FaSpoon className="benefit-icon" />,
+      title: "EASY-TO-MIX POWDER",
+      description: "Convenient and easy to consume daily."
+    },
+    {
+      icon: <FiTrendingUp className="benefit-icon" />,
+      title: "IMPROVES PERFORMANCE",
+      description: "Helps you stay active and focused."
+    },
+    {
+      icon: <FaHandFist className="benefit-icon" />,
+      title: "BOOSTS STAMINA",
+      description: "Helps you do more, go further."
+    },
+    {
+      icon: <FaBolt className="benefit-icon" />,
+      title: "INCREASES ENERGY",
+      description: "Supports energy and reduces fatigue."
+    },
+    {
+      icon: <FiClock className="benefit-icon" />,
+      title: "SUPPORTS LONGER STAY",
+      description: "Helps maintain endurance naturally."
+    },
+    {
+      icon: <FaLeaf className="benefit-icon" />,
+      title: "NATURAL 15 HERB BLEND",
+      description: "Powered by 15 potent herbs for overall wellness."
+    }
   ];
 
   const ingredients = [
-    { name: "Ashwagandha", desc: "Reduces stress & anxiety", color: "#e6f7e6" },
-    { name: "Tulsi", desc: "Boosts immunity", color: "#f0f9e6" },
-    { name: "Shilajit", desc: "Enhances vitality", color: "#e6f4f7" },
-    { name: "Amla", desc: "Rich in Vitamin C", color: "#f7f0e6" }
+    { name: "Ashwagandha", botanical: "Withania somnifera", desc: "Reduces stress & anxiety", color: "#e6f7e6" },
+    { name: "Shatavari", botanical: "Asparagus racemosus", desc: "Supports vitality", color: "#f0f9e6" },
+    { name: "Safed Musli", botanical: "Chlorophytum borivilianum", desc: "Enhances strength", color: "#e6f4f7" },
+    { name: "Gokhru", botanical: "Tribulus terrestris", desc: "Supports wellness", color: "#f7f0e6" },
+    { name: "Kaunch Beej", botanical: "Mucuna pruriens", desc: "Natural vitality", color: "#f0f9e6" },
+    { name: "Vidarikand", botanical: "Pueraria tuberosa", desc: "Traditional herb", color: "#e6f4f7" },
+    { name: "Shilajit", botanical: "Asphaltum punjabianum", desc: "Enhances vitality", color: "#f7f0e6" },
+    { name: "Amalaki", botanical: "Phyllanthus emblica", desc: "Rich in Vitamin C", color: "#f0f9e6" }
   ];
 
   const howItWorks = [
@@ -299,60 +323,7 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
             </div>
           </div>
 
-          {/* Column 3: Key Benefits Card */}
-          <div className="product-details-benefits-card">
-            <h3 className="benefits-card-title">
-              <span className="benefits-title-black">KEY</span>
-              <span className="benefits-title-red"> BENEFITS</span>
-            </h3>
-            <div className="benefits-list">
-              <div className="benefit-item">
-                <div className="benefit-icon-wrapper">
-                  <FaBolt className="benefit-icon" />
-                </div>
-                <div className="benefit-content">
-                  <h4 className="benefit-title">More Energy</h4>
-                  <p className="benefit-desc">Stay active all day</p>
-                </div>
-              </div>
-              <div className="benefit-item">
-                <div className="benefit-icon-wrapper">
-                  <FaHandFist className="benefit-icon" />
-                </div>
-                <div className="benefit-content">
-                  <h4 className="benefit-title">Higher Stamina</h4>
-                  <p className="benefit-desc">Do more, go further</p>
-                </div>
-              </div>
-              <div className="benefit-item">
-                <div className="benefit-icon-wrapper">
-                  <FaPersonRunning className="benefit-icon" />
-                </div>
-                <div className="benefit-content">
-                  <h4 className="benefit-title">Better Performance</h4>
-                  <p className="benefit-desc">For your everyday grind</p>
-                </div>
-              </div>
-              <div className="benefit-item">
-                <div className="benefit-icon-wrapper">
-                  <FaShieldHalved className="benefit-icon" />
-                </div>
-                <div className="benefit-content">
-                  <h4 className="benefit-title">Stronger Immunity</h4>
-                  <p className="benefit-desc">Stay healthier, naturally</p>
-                </div>
-              </div>
-              <div className="benefit-item">
-                <div className="benefit-icon-wrapper">
-                  <FaLeaf6 className="benefit-icon" />
-                </div>
-                <div className="benefit-content">
-                  <h4 className="benefit-title">Natural Nutrition</h4>
-                  <p className="benefit-desc">Powered by 15 potent herbs</p>
-                </div>
-              </div>
-            </div>
-          </div>
+
         </div>
 
         {/* Sticky Tab Navigation */}
@@ -364,7 +335,7 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
                 className={`tab-button ${activeTab === tab ? 'active' : ''}`}
                 onClick={() => scrollToSection(tab)}
               >
-                {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                {tab === 'comparison' ? 'Comparison' : tab.charAt(0).toUpperCase() + tab.slice(1)}
               </button>
             ))}
           </nav>
@@ -381,57 +352,87 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
             <div className="description-two-column">
               <div className="description-left">
                 <h2 className="premium-heading">The Essence of Wellness</h2>
-                <p className="premium-description">{product.description}</p>
-                <p className="premium-description">{product.shortDescription}</p>
+                <p className="premium-description">A premium herbal blend featuring 15 carefully selected herbs.</p>
+                <p className="premium-description">Discover a thoughtfully formulated blend designed to complement your daily wellness routine.</p>
+                <div className="description-highlights">
+                  <span className="highlight-badge">Premium Herbal Formula</span>
+                  <span className="highlight-badge">15 Herbs Blend</span>
+                </div>
               </div>
               <div className="description-right">
-                <div className="natural-card">
-                  <div className="natural-icon">🌿</div>
-                  <p className="natural-text">Pure & Natural</p>
-                </div>
+                <img src={img7} alt="Premium Herbal Formula" className="description-image" />
               </div>
             </div>
           </section>
 
           {/* Why You'll Love It */}
-          <section className="premium-section" id="features">
-            <h2 className="premium-heading centered">Why You'll Love It</h2>
-            <div className="features-grid">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  className="feature-card"
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="feature-icon">{feature.icon}</div>
-                  <h3 className="feature-title">{feature.title}</h3>
-                  <p className="feature-desc">{feature.desc}</p>
-                </motion.div>
-              ))}
+          <section className="premium-section why-love-section" id="why-love">
+            <div className="why-love-content">
+              <h2 className="why-love-heading">
+                <span className="why-love-line"></span>
+                Why You'll Love It
+                <span className="why-love-line"></span>
+              </h2>
+              <h3 className="why-love-headline">
+                <span className="why-love-highlight">100% Natural.</span> Pure & Safe<br />
+                For Your Daily Wellness
+              </h3>
+              <p className="why-love-description">
+                Active Core Herbs is a premium herbal blend made with <strong className="why-love-bold-highlight">15 carefully selected herbs</strong> to support your energy, stamina, and overall vitality. It's <strong className="why-love-bold-highlight">100% natural, free from harmful chemicals</strong>, <strong className="why-love-bold-highlight">lab tested for quality</strong>, and proudly <strong className="why-love-bold-highlight">made in India</strong> — a trusted addition to your daily wellness routine.
+              </p>
+              <button
+                className="why-love-buy-btn"
+                onClick={handleBuyNow}
+              >
+                <FaBagShopping />
+                BUY NOW
+                <FaArrowRight />
+              </button>
             </div>
           </section>
 
           {/* Benefits Section */}
-          <section 
-            className="premium-section" 
+          <section
+            className="premium-section"
             id="benefits"
             ref={(el) => (sectionRefs.current.benefits = el)}
           >
-            <h2 className="premium-heading centered">Key Benefits</h2>
-            <div className="benefits-grid">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="benefit-card">
-                  <div className="benefit-icon-wrapper">{benefit.icon}</div>
-                  <h3 className="benefit-title">{benefit.title}</h3>
+            <h2 className="benefits-heading">
+              <span className="benefits-heading-maroon">Key</span>
+              <span className="benefits-heading-black"> Benefits</span>
+            </h2>
+            <div className="benefits-heading-decorator">
+              <span className="decorator-line"></span>
+              <span className="decorator-line"></span>
+            </div>
+            <div className="benefits-two-column">
+              {/* Left side - Infographic image */}
+              <div className="benefits-image-side">
+                <img src={img6} alt="Key Benefits Infographic" className="benefits-infographic-img" />
+              </div>
+
+              {/* Right side - Benefits grid */}
+              <div className="benefits-content-side">
+                <div className="benefits-grid">
+                  {benefits.map((benefit, index) => (
+                    <div key={index} className="benefit-card">
+                      <div className="benefit-icon-circle">
+                        {benefit.icon}
+                      </div>
+                      <div className="benefit-text-wrapper">
+                        <h3 className="benefit-title">{benefit.title}</h3>
+                        <p className="benefit-description">{benefit.description}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </section>
 
           {/* Ingredients Section */}
-          <section 
-            className="premium-section" 
+          <section
+            className="premium-section"
             id="ingredients"
             ref={(el) => (sectionRefs.current.ingredients = el)}
           >
@@ -446,83 +447,76 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
                 >
                   <div className="ingredient-icon">🍃</div>
                   <h3 className="ingredient-name">{ingredient.name}</h3>
+                  <p className="ingredient-botanical">{ingredient.botanical}</p>
                   <p className="ingredient-desc">{ingredient.desc}</p>
                 </motion.div>
               ))}
             </div>
           </section>
 
-          {/* How It Works */}
-          <section className="premium-section" id="how-it-works">
-            <h2 className="premium-heading centered">How It Works</h2>
-            <div className="how-it-works">
-              {howItWorks.map((item, index) => (
-                <div key={index} className="how-step">
-                  <div className="step-number">{item.step}</div>
-                  <h3 className="step-title">{item.title}</h3>
-                  <p className="step-desc">{item.desc}</p>
-                  {index < howItWorks.length - 1 && (
-                    <div className="step-connector">↓</div>
-                  )}
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Why Choose Active Core Herbs */}
-          <section className="premium-section why-choose-section" id="why-choose">
-            <div className="why-choose-container">
-              <div className="why-choose-left">
-                <div className="why-choose-decorative-circle circle-1"></div>
-                <div className="why-choose-decorative-circle circle-2"></div>
-                <div className="why-choose-decorative-circle circle-3"></div>
-                <img
-                  src={img1}
-                  alt="Herbal Product"
-                  className="why-choose-product-image"
-                />
-              </div>
-              <div className="why-choose-right">
-                <span className="why-choose-badge">Why Choose Active Core Herbs</span>
-                <h2 className="why-choose-heading">Nature Powered Wellness</h2>
-                <p className="why-choose-description">
-                  Experience the pure essence of nature with our meticulously crafted herbal supplements. 
-                  Each product is born from ancient Ayurvedic wisdom, combined with modern scientific 
-                  rigor to deliver exceptional results you can feel.
-                </p>
-                <ul className="why-choose-benefits-list">
-                  <li className="why-choose-benefit">
-                    <span className="why-choose-benefit-check">
-                      <FiCheck />
-                    </span>
-                    GMP Certified
-                  </li>
-                  <li className="why-choose-benefit">
-                    <span className="why-choose-benefit-check">
-                      <FiCheck />
-                    </span>
-                    Non GMO
-                  </li>
-                  <li className="why-choose-benefit">
-                    <span className="why-choose-benefit-check">
-                      <FiCheck />
-                    </span>
-                    Chemical Free
-                  </li>
-                  <li className="why-choose-benefit">
-                    <span className="why-choose-benefit-check">
-                      <FiCheck />
-                    </span>
-                    Fast Delivery
-                  </li>
-                  <li className="why-choose-benefit">
-                    <span className="why-choose-benefit-check">
-                      <FiCheck />
-                    </span>
-                    Made in India
-                  </li>
-                </ul>
-              </div>
+          {/* Product Comparison Section */}
+          <section
+            className="premium-section comparison-section"
+            id="comparison"
+            ref={(el) => (sectionRefs.current.comparison = el)}
+          >
+            <h2 className="premium-heading centered">Product Comparison</h2>
+            <div className="comparison-table-wrapper">
+              <table className="comparison-table">
+                <thead>
+                  <tr>
+                    <th className="comparison-header">Feature</th>
+                    <th className="comparison-header active-core">Active Core Herbs</th>
+                    <th className="comparison-header standard">Standard Herbal Powder</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td className="comparison-feature">Number of Herbs</td>
+                    <td className="comparison-value active-core">
+                      <strong>15 herbs</strong>
+                      <span className="comparison-detail">Carefully selected blend</span>
+                    </td>
+                    <td className="comparison-value standard">
+                      General blend
+                      <span className="comparison-detail">Ingredient details may vary</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="comparison-feature">Formulation</td>
+                    <td className="comparison-value active-core">
+                      <strong>Herbal blend</strong>
+                      <span className="comparison-detail">Precision crafted formula</span>
+                    </td>
+                    <td className="comparison-value standard">
+                      Whole-herb powder
+                      <span className="comparison-detail">Basic preparation</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="comparison-feature">Daily Wellness Support</td>
+                    <td className="comparison-value active-core">
+                      <strong>Designed for regular use</strong>
+                      <span className="comparison-detail">As directed</span>
+                    </td>
+                    <td className="comparison-value standard">
+                      Varies
+                      <span className="comparison-detail">Formulation and usage vary</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="comparison-feature">Sourcing & Quality</td>
+                    <td className="comparison-value active-core">
+                      <strong>Verified sourcing</strong>
+                      <span className="comparison-detail">Quality information available</span>
+                    </td>
+                    <td className="comparison-value standard">
+                      Varies
+                      <span className="comparison-detail">Sourcing and transparency vary by product</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </section>
 
