@@ -397,13 +397,16 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
             id="benefits"
             ref={(el) => (sectionRefs.current.benefits = el)}
           >
-            <h2 className="benefits-heading">
-              <span className="benefits-heading-maroon">Key</span>
-              <span className="benefits-heading-black"> Benefits</span>
-            </h2>
-            <div className="benefits-heading-decorator">
-              <span className="decorator-line"></span>
-              <span className="decorator-line"></span>
+            <div className="benefits-header-container">
+              <h2 className="benefits-heading">
+                <span className="benefits-heading-maroon">Key</span>
+                <span className="benefits-heading-black"> Benefits</span>
+              </h2>
+              <div className="benefits-heading-decorator">
+                <span className="decorator-line"></span>
+                <span className="decorator-line"></span>
+              </div>
+              <p className="benefits-subtitle">Discover the natural benefits of our 15-herb blend.</p>
             </div>
             <div className="benefits-two-column">
               {/* Left side - Infographic image */}
