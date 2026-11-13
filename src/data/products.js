@@ -11,7 +11,7 @@ export const products = [
     name: "Black Edition",
     slug: "black-edition",
     price: 1499,
-    originalPrice: 1799,
+    originalPrice: 2899,
     rating: 4.9,
     reviews: 312,
     image: img1,
