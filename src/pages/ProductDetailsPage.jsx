@@ -65,6 +65,14 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
     }
   };
 
+  const showPreviousImage = () => {
+    setCurrentImageIndex((index) => (index - 1 + product.images.length) % product.images.length);
+  };
+
+  const showNextImage = () => {
+    setCurrentImageIndex((index) => (index + 1) % product.images.length);
+  };
+
   const scrollToSection = (tab) => {
     setActiveTab(tab);
     const element = sectionRefs.current[tab];
@@ -207,6 +215,22 @@ const ProductDetailsPage = ({ useDefaultProduct = false }) => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.4 }}
               />
+              <button
+                type="button"
+                className="product-gallery-arrow product-gallery-arrow-previous"
+                onClick={showPreviousImage}
+                aria-label="Show previous product image"
+              >
+                <FiChevronLeft />
+              </button>
+              <button
+                type="button"
+                className="product-gallery-arrow product-gallery-arrow-next"
+                onClick={showNextImage}
+                aria-label="Show next product image"
+              >
+                <FiChevronRight />
+              </button>
             </div>
             <div className="product-details-thumbnails">
               {product.images.map((img, index) => (
